@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nix-homebrew allows you to configure homebrew declaratively, so the taps
     # can be managed by nix as well. Keeps all versions predictable!
     nix-homebrew = {
@@ -24,9 +27,10 @@
     };
   };
 
-  outputs = inputs@{ 
+  outputs = {
       self,
       nixpkgs,
+      home-manager,
       nix-darwin,
       nix-homebrew,
       homebrew-core,
@@ -42,6 +46,7 @@
           pkgs.vim
           pkgs.cargo
           pkgs.tmux
+          pkgs.dooit
           # pkgs.taskwarrior3
           (pkgs.writeShellScriptBin "taskw" "exec -a $0 ${pkgs.taskwarrior3}/bin/task $@")
         ];
@@ -80,7 +85,7 @@
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
-            enable = true;
+            enable = false;
             # Enable for Apple silicon
             enableRosetta = true;
             user = "maulik";

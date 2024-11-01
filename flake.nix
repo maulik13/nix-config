@@ -47,6 +47,7 @@
           pkgs.cargo
           pkgs.tmux
           pkgs.dooit
+          pkgs.yazi
           # pkgs.taskwarrior3
           (pkgs.writeShellScriptBin "taskw" "exec -a $0 ${pkgs.taskwarrior3}/bin/task $@")
         ];

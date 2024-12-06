@@ -44,7 +44,7 @@
         system = arch;
         modules = [
           ./darwin/darwin.nix
-        home-manager.darwinMdules.home-manager 
+        home-manager.darwinModules.home-manager 
           {
             _module.args = { inherit inputs; };
         home-manager = {

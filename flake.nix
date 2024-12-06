@@ -44,14 +44,14 @@
         system = arch;
         modules = [
           ./darwin/darwin.nix
-        home-manager.darwinModules.home-manager 
+          home-manager.darwinModules.home-manager 
           {
             _module.args = { inherit inputs; };
-        home-manager = {
-      users.${user} = import ./home-manager;
+            home-manager = {
+              users.${user} = import ./home-manager;
             };
-      users.users.${user}.home = "/Users/{$user}";
-      nix.settings.trusted-users = [ user ];
+            users.users.${user}.home = "/Users/${user}";
+            nix.settings.trusted-users = [ user ];
           }
       ];
       };

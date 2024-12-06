@@ -16,7 +16,7 @@
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
     file = {
-      hammerspoon = lib.mkIf pkgs.stdenvNoCC.isDarwin {
+      peaclock = lib.mkIf pkgs.stdenvNoCC.isDarwin {
         source = ./../.config/peaclock;
         target = ".config/peaclock";
         recursive = true;

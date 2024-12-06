@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 5;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -24,7 +28,6 @@
 
   # Auto upgrade nix package and the daemon service.
   services = {
-    nix-daemon.enable = true;
     yabai.enable = true;
   };
 

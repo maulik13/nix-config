@@ -39,28 +39,24 @@
     home-manager,
     ...
     } @ inputs: let
-    darwinSystem = {user, arch ? "aarch64-darwin"}:
-      darwin.lib.darwinSystem {
-        system = arch;
-        modules = [
-          ./darwin/darwin.nix
-          home-manager.darwinModules.home-manager 
-          {
-            _module.args = { inherit inputs; };
-            home-manager = {
-              users.${user} = import ./home-manager;
-            };
-            users.users.${user}.home = "/Users/${user}";
-            nix.settings.trusted-users = [ user ];
-          }
-      ];
+    home-manager-user = {user, path}: {
+      home-manager = {
+        useUserPackages = true;
+        useGlobalPkgs = true;
+        users.${user} = import path;
       };
+      nix.settings.trusted-users = [ user ];
+    };
     in
-
     {
     darwinConfigurations = {
-      "mk-stacc-mac" = darwinSystem {
-          user = "maulik";
+      mk-mac-work = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          home-manager.darwinModules.default
+          (home-manager-user "maulik" ./systems/macwork/home.nix)
+          ./systems/macwork/host.nix
+        ];
       };
     };
   };

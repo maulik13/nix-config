@@ -1,5 +1,11 @@
 {
-  description = "Diaballin simple system configuration";
+  #   _   _ _         ____             __ _
+  #  | \ | (_)_  __  / ___|___  _ __  / _(_) __ _ ___
+  #  |  \| | \ \/ / | |   / _ \| '_ \| |_| |/ _` / __|
+  #  | |\  | |>  <  | |__| (_) | | | |  _| | (_| \__ \
+  # |_| \_|_/_/\_\  \____\___/|_| |_|_| |_|\__, |___/
+  #                                      |___/
+  description = "Diaballin dotfiles";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -7,96 +13,55 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    flake-utils.url = "github:numtide/flake-utils";
+    # flake-registry.url = "github:NixOS/flake-registry";
+    dooit.url = "github:dooit-org/dooit";
+    dooit-extras.url = "github:dooit-org/dooit-extras";
+
     # nix-homebrew allows you to configure homebrew declaratively, so the taps
     # can be managed by nix as well. Keeps all versions predictable!
-    nix-homebrew = {
+    homebrew = {
       url = "github:zhaofengli/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
   };
 
+
+  # In this context, outputs are mostly about getting home-manager what it
+  # needs since it will be the one using the flake
   outputs = {
-      self,
-      nixpkgs,
-      home-manager,
-      nix-darwin,
-      nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-bundle }:
-  let
-    configuration = { lib, pkgs, ... }: {
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment = {
-        systemPackages =
-        [
-          pkgs.vim
-          pkgs.cargo
-          pkgs.tmux
-          pkgs.dooit
-          pkgs.yazi
-          # pkgs.taskwarrior3
-          (pkgs.writeShellScriptBin "taskw" "exec -a $0 ${pkgs.taskwarrior3}/bin/task $@")
-        ];
-      };
-
-      # Auto upgrade nix package and the daemon service.
-      services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
-      # programs.fish.enable = true;
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 5;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-
-      security.pam.enableSudoTouchIdAuth = true;
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#mk-stacc-mac
-    darwinConfigurations."mk-stacc-mac" = nix-darwin.lib.darwinSystem {
-      modules = [
-        configuration
-        nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            enable = false;
-            # Enable for Apple silicon
-            enableRosetta = true;
-            user = "maulik";
-            autoMigrate = true;
-          };
-        }
+    nixpkgs,
+    darwin,
+    home-manager,
+    ...
+    } @ inputs: let
+    darwinSystem = {user, arch ? "aarch64-darwin"}:
+      darwin.lib.darwinSystem {
+        system = arch;
+        modules = [
+          ./darwin/darwin.nix
+        home-manager.darwinMdules.home-manager 
+          {
+            _module.args = { inherit inputs; };
+        home-manager = {
+      users.${user} = import ./home-manager;
+            };
+      users.users.${user}.home = "/Users/{$user}";
+      nix.settings.trusted-users = [ user ];
+          }
       ];
-    };
+      };
+    in
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."mk-stacc-mac".pkgs;
+    {
+    darwinConfigurations = {
+      "mk-stacc-mac" = darwinSystem {
+          user = "maulik";
+      };
+    };
   };
 }

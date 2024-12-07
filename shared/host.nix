@@ -45,8 +45,6 @@
     # which is the name I use any time I'm customising stuff.
     # (at time of writing, this is only used for `nix flake init -t my#...`)
     my.flake = inputs.self;
-
-    mkshell.flake = inputs.mkshell;
   };
 
   nix.channel.enable = false;

@@ -1,8 +1,8 @@
 { ... }:
 {
   imports = [
-    ./git.nix
-    ./kitty
+    # ./git.nix
+    # ./kitty
     ./tmux.nix
     ./zed.nix
   ];

@@ -9,24 +9,40 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    flake-utils.url = "github:numtide/flake-utils";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
-    # flake-registry.url = "github:NixOS/flake-registry";
+
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
     # nix-homebrew allows you to configure homebrew declaratively, so the taps
     # can be managed by nix as well. Keeps all versions predictable!
-    homebrew = {
+    nix-homebrew = {
       url = "github:zhaofengli/nix-homebrew";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-bundle = {
+      url = "github:homebrew/homebrew-bundle";
+      flake = false;
     };
   };
 
@@ -37,15 +53,22 @@
     nixpkgs,
     darwin,
     home-manager,
+    nix-homebrew,
+    flake-utils,
+    homebrew-core,
+    homebrew-cask,
+    homebrew-bundle,
     ...
     } @ inputs: let
     home-manager-user = {user, path}: {
       home-manager = {
         useUserPackages = true;
         useGlobalPkgs = true;
-        users.${user} = import path;
+        users.${user} = path;
+        extraSpecialArgs = {
+            inherit inputs;
+        };
       };
-      nix.settings.trusted-users = [ user ];
     };
     in
     {
@@ -54,9 +77,12 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.default
-          (home-manager-user "maulik" ./systems/macwork/home.nix)
+          (home-manager-user {user="maulik"; path=./systems/macwork/home.nix;})
           ./systems/macwork/host.nix
         ];
+        specialArgs = {
+          inherit inputs;
+        };
       };
     };
   };

@@ -29,9 +29,6 @@
     # Other stuff
     asciinema
     nix-output-monitor
-
-    # ccase is used for case conversion
-    inputs.ccase.packages.${pkgs.stdenv.system}.default
   ];
 
   # Enables the programs and uses my configuration for them.

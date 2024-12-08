@@ -13,10 +13,10 @@
   home.username = "maulik";
 
   home.packages = with pkgs; [
-    # Tooling 
+    # Tooling
     jq
     yazi
-    "1password-cli"
+    _1password-cli
 
     # Programming
     vim
@@ -25,11 +25,13 @@
     cargo
     nixfmt-rfc-style
     kcl
+    kubeswitch
 
     # Other stuff
     asciinema
     asciiquarium
     sl
+    peaclock
     nix-output-monitor
   ];
 

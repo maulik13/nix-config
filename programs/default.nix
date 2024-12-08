@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    # ./git.nix
+    ./git.nix
     # ./kitty
     ./tmux.nix
     ./zed.nix

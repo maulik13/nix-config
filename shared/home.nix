@@ -16,7 +16,7 @@
     # Tooling 
     jq
     yazi
-    kcl
+    "1password-cli"
 
     # Programming
     vim
@@ -24,6 +24,7 @@
     nodejs
     cargo
     nixfmt-rfc-style
+    kcl
 
     # Other stuff
     asciinema
@@ -36,7 +37,7 @@
   # The options are defined in /programs/*
   my.programs = {
     # zsh.enable = true;
-    # git.enable = true;
+    git.enable = true;
     tmux.enable = true;
   };
 

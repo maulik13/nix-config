@@ -1,5 +1,14 @@
-{pkgs, lib, ...}:
+{pkgs, config, lib, ...}:
+with lib;
+let
+  cfg = config.my.programs.tmux;
+  in
 {
+  options.my.programs.tmux = {
+    enable = mkEnableOption "My tmux configuration";
+  };
+
+  config = mkIf cfg.enable {
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
@@ -17,5 +26,6 @@
       tmux-thumbs
       yank
     ];
+  };
   };
 }

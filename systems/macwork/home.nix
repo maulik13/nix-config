@@ -7,6 +7,8 @@ in
     ../../shared/home.nix
   ];
 
+  # The homeDirectory is configured by each host's configuration because it's
+  # not constant between linux and macos
   home.homeDirectory = "/Users/maulik";
   home.stateVersion = "24.05";
 

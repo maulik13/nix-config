@@ -13,12 +13,14 @@
     user = "maulik";
 
     # All taps must be declared below.
-    mutableTaps = false;
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
-    };
+    # TODO: Take over taps
+    # mutableTaps = false;
+    # taps = {
+    #   "homebrew/homebrew-core" = inputs.homebrew-core;
+    #   "homebrew/homebrew-cask" = inputs.homebrew-cask;
+    #   "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+    # };
+    autoMigrate = true;
   };
 
   homebrew.enable = true;
@@ -29,10 +31,7 @@
   homebrew.casks = [
     "keycastr"
     "homerow"
+    "alfred"
   ];
 
-  fonts.packages = [
-    pkgs.atkinson-hyperlegible
-    pkgs.jetbrains-mono
-  ];
 }

@@ -9,10 +9,12 @@ in
 {
   imports = [
     ../../shared/host.nix
+    ../../shared/darwin.nix
     ../../shared/brew.nix
   ];
 
-  environment.shells = [ pkgs.zsh ];
+  # This modifies /etc/shells file
+  # environment.shells = [ pkgs.zsh ];
 
   users.users.maulik = {
     description = "Maulik";

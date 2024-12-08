@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   imports = [
     # ./git.nix
@@ -6,4 +6,12 @@
     ./tmux.nix
     ./zed.nix
   ];
+  home = {
+    file = {
+      peaclock = lib.mkIf pkgs.stdenvNoCC.isDarwin {
+        source = ./../.config/peaclock;
+        target = ".config/peaclock";
+      };
+    };
+  };
 }

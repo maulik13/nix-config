@@ -5,12 +5,10 @@
   ...
 }:
 {
-  time.timeZone = "Europe/Oslo";
-
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
   environment.systemPackages = with pkgs; [
-    # mosh
+    home-manager
   ];
 
   nix.nixPath = lib.mkForce [
@@ -58,6 +56,8 @@
   # This needs to be set to get the default system-level configuration, such
   # as completions for Nix and related tools. This is also required because on macOS
   # the $PATH doesn't include all the entries it should by default.
-  programs.zsh.enable = true;
-  programs.gnupg.agent.enable = true;
+  programs = {
+    zsh.enable = true;
+    gnupg.agent.enable = true;
+  };
 }

@@ -10,8 +10,6 @@
     ../modules/home
   ];
 
-  # The homeDirectory is configured by each host's configuration because it's
-  # not constant between linux and macos
   home.username = "maulik";
 
   home.packages = with pkgs; [
@@ -25,17 +23,20 @@
     neovim
     nodejs
     cargo
+    nixfmt-rfc-style
 
     # Other stuff
     asciinema
+    asciiquarium
+    sl
     nix-output-monitor
   ];
 
   # Enables the programs and uses my configuration for them.
   # The options are defined in /programs/*
   my.programs = {
-    zsh.enable = true;
-    git.enable = true;
+    # zsh.enable = true;
+    # git.enable = true;
     tmux.enable = true;
   };
 

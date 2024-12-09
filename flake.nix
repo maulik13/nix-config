@@ -9,7 +9,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -46,44 +45,65 @@
     };
   };
 
-
   # In this context, outputs are mostly about getting home-manager what it
   # needs since it will be the one using the flake
-  outputs = {
-    nixpkgs,
-    darwin,
-    home-manager,
-    nix-homebrew,
-    flake-utils,
-    homebrew-core,
-    homebrew-cask,
-    homebrew-bundle,
-    ...
-    } @ inputs: let
-    home-manager-user = {user, path}: {
-      home-manager = {
-        useUserPackages = true;
-        useGlobalPkgs = true;
-        users.${user} = path;
-        extraSpecialArgs = {
-            inherit inputs;
+  outputs =
+    {
+      nixpkgs,
+      darwin,
+      home-manager,
+      nix-homebrew,
+      flake-utils,
+      homebrew-core,
+      homebrew-cask,
+      homebrew-bundle,
+      ...
+    }@inputs:
+    let
+      hosts = import ./config/hosts.nix;
+      home-manager-user =
+        { user, path }:
+        {
+          home-manager = {
+            useUserPackages = true;
+            useGlobalPkgs = true;
+            users.${user} = path;
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          };
         };
-      };
-    };
+      mkDarwinConfig =
+        host:
+        darwin.lib.darwinSystem {
+          system = host.arch;
+          modules = [
+            home-manager.nixosModules.home-manager
+            (home-manager-user {
+              user = host.user;
+              path = ./systems/${host.dir}/home.nix;
+            })
+            ./systems/${host.dir}/host.nix
+          ];
+        };
     in
     {
-    darwinConfigurations = {
-      mk-mac-work = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          home-manager.darwinModules.default
-          (home-manager-user {user="maulik"; path=./systems/macwork/home.nix;})
-          ./systems/macwork/host.nix
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
+      # darwinConfigurations = {
+      #   mk-mac-work = darwin.lib.darwinSystem {
+      #     system = "aarch64-darwin";
+      #     modules = [
+      #       home-manager.darwinModules.default
+      #       (home-manager-user {
+      #         user = "maulik";
+      #         path = ./systems/macwork/home.nix;
+      #       })
+      #       ./systems/macwork/host.nix
+      #     ];
+      #     specialArgs = {
+      #       inherit inputs;
+      #     };
+      #   };
+      # };
+      darwinConfigurations."${hosts.work.hostname}" = mkDarwinConfig hosts.work;
     };
-  };
 }

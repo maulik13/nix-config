@@ -25,7 +25,6 @@
     cargo
     nixfmt-rfc-style
     kcl
-    kubeswitch
 
     # Other stuff
     asciinema
@@ -91,5 +90,10 @@
     };
 
     lazygit.enable = true;
+
+    kubeswitch = {
+      enable = true;
+      #   commandName = "kubeswitch";
+    };
   };
 }

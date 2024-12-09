@@ -9,8 +9,8 @@
   home = {
     file = {
       peaclock = lib.mkIf pkgs.stdenvNoCC.isDarwin {
-        source = ./../.config/peaclock;
-        target = ".config/peaclock";
+        source = ./../.config/peaclock/config;
+        target = ".config/peaclock/config";
       };
     };
   };

@@ -85,6 +85,9 @@
             })
             ./systems/${host.dir}/host.nix
           ];
+          specialArgs = {
+            inherit inputs;
+          };
         };
     in
     {

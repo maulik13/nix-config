@@ -1,18 +1,51 @@
 { pkgs, ... }:
 
 {
-  system = {
-    defaults = {
-      # Dock
-      dock.autohide = true;
-      dock.orientation = "left";
-      dock.tilesize = 36;
-      # Finder
-      finder.AppleShowAllExtensions = true;
-      finder.ShowPathbar = true;
+  # This modifies /etc/shells file, take this later
+  # environment.shells = [ pkgs.zsh ];
+
+  system.defaults = {
+    dock = {
+      autohide = true;
+      orientation = "left";
+      tilesize = 36;
+    };
+    finder = {
+      AppleShowAllExtensions = true;
+      ShowPathbar = true;
+      CreateDesktop = false;
+      # This magic string makes it search the current folder by default
+      FXDefaultSearchScope = "SCcf";
+
+      # Use the column view by default-- the obviously correct and best view
+      FXPreferredViewStyle = "clmv";
     };
   };
   security = {
     pam.enableSudoTouchIdAuth = true;
+  };
+
+  system.defaults.CustomUserPreferences = {
+    NSGlobalDomain = {
+      NSWindowShouldDragOnGesture = true;
+    };
+    "com.superultra.homerow" = {
+      label-characters = "arstneiowfpluy";
+      scroll-keys = "mnei";
+      map-arrow-keys-to-scroll = false;
+      launch-at-login = true;
+      is-experimental-support-enabled = true;
+      # The shortcut really is stored as the shift symbol and command symbol!
+      non-search-shortcut = "⇧⌘Space";
+    };
+  };
+
+  system.defaults.NSGlobalDomain = {
+    # Automatic dark mode at night
+    AppleInterfaceStyleSwitchesAutomatically = true;
+    AppleShowAllExtensions = true;
+
+    # Enables using the function keys as the F<number> key instead of OS controls
+    "com.apple.keyboard.fnState" = true;
   };
 }

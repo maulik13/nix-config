@@ -7,7 +7,6 @@
 {
   imports = [
     ../programs
-    ../modules/home
   ];
 
   home.username = "maulik";
@@ -38,6 +37,7 @@
   # Enables the programs and uses my configuration for them.
   # The options are defined in /programs/*
   my.programs = {
+    zsh.enable = true;
     git.enable = true;
     tmux.enable = true;
   };
@@ -46,11 +46,6 @@
   # Programs in this section should be limited to a few lines of config at most.
   programs = {
     home-manager.enable = true;
-
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    # };
 
     broot = {
       enable = true;

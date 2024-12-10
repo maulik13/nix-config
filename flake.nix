@@ -67,7 +67,7 @@
           home-manager = {
             useUserPackages = true;
             useGlobalPkgs = true;
-            users.${user} = path;
+            users.${user} = import path;
             extraSpecialArgs = {
               inherit inputs;
             };
@@ -77,8 +77,9 @@
         host:
         darwin.lib.darwinSystem {
           system = host.arch;
+
           modules = [
-            home-manager.nixosModules.home-manager
+            home-manager.darwinModules.home-manager
             (home-manager-user {
               user = host.user;
               path = ./systems/${host.dir}/home.nix;
@@ -91,22 +92,6 @@
         };
     in
     {
-      # darwinConfigurations = {
-      #   mk-mac-work = darwin.lib.darwinSystem {
-      #     system = "aarch64-darwin";
-      #     modules = [
-      #       home-manager.darwinModules.default
-      #       (home-manager-user {
-      #         user = "maulik";
-      #         path = ./systems/macwork/home.nix;
-      #       })
-      #       ./systems/macwork/host.nix
-      #     ];
-      #     specialArgs = {
-      #       inherit inputs;
-      #     };
-      #   };
-      # };
       darwinConfigurations."${hosts.work.hostname}" = mkDarwinConfig hosts.work;
     };
 }

@@ -46,6 +46,6 @@
     AppleShowAllExtensions = true;
 
     # Enables using the function keys as the F<number> key instead of OS controls
-    "com.apple.keyboard.fnState" = true;
+    "com.apple.keyboard.fnState" = false;
   };
 }

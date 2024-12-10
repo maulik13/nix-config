@@ -5,6 +5,10 @@
   ...
 }:
 {
+  # imports = [
+  #   # Provide the full path to the kubeswitch.nix module
+  #   "${inputs.nixpkgs}/nixos/modules/programs/kubeswitch.nix"
+  # ];
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
   environment.systemPackages = with pkgs; [
@@ -59,7 +63,14 @@
   programs = {
     zsh.enable = true;
     gnupg.agent.enable = true;
-
   };
+
+  # Import the kubeswitch module directly
+
+  # # Configure kubeswitch
+  # programs.kubeswitch = {
+  #   enable = true;
+  #   commandName = "kubeswitch";
+  # };
 
 }

@@ -17,6 +17,9 @@
     yazi
     _1password-cli
 
+    # Terminal
+    starship
+
     # Programming
     vim
     neovim
@@ -91,5 +94,15 @@
 
     lazygit.enable = true;
 
+  };
+
+  # lib.mkIf pkgs.stdenvNoCC.isDarwin
+  xdg = {
+    enable = true;
+
+    configFile."peaclock" = {
+      source = ./../config/peaclock/config;
+      target = "peaclock/config";
+    };
   };
 }

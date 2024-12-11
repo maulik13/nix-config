@@ -20,5 +20,8 @@ in
 
       settings = lib.readFile ../config/starship/clean.toml;
     };
+    xdg.configFile."starship.toml" = {
+      souce = ../config/starship/clean.toml;
+    };
   };
 }

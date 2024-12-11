@@ -1,0 +1,247 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Just in case
+#    
+
+format = """
+$os\
+$directory\
+${custom.direnv}\
+$git_branch\
+$git_status\
+[ ](fg:base)\
+$fill\
+[ ](fg:base)\
+$cmd_duration\
+$docker_context\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$kubernetes\
+$time\
+$line_break\
+${custom.emoji}  \
+$character"""
+
+palette = 'catppuccin_macchiato'
+add_newline = false
+
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+sapphire1 = "#517690"
+sapphire0 = "#304256"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base2 = "#404566"
+base1 = "#353954"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
+
+[os]
+disabled = false
+style = "fg:text"
+format = "[$symbol ]($style)"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = ""
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[fill]
+symbol = "—"
+style = "surface1"
+
+[cmd_duration]
+min_time = 500
+format = '[ took](fg:subtext0)[ $duration](bold yellow)'
+
+[battery]
+full_symbol        = "🔋 "
+charging_symbol    = "⚡️ "
+discharging_symbol = "💀 "
+
+[username]
+show_always = true
+style_user = "bg:base1 fg:subtext1"
+style_root = "bg:base1 fg:subtext1"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:pink bold"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+"~" = " "
+
+[custom.is_git]
+symbol = ""
+style = "fg:sapphire"
+format = '[$symbol]($style)'
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+shell = ["zsh", "--no-rcs"]
+ignore_timeout = true
+
+[custom.is_not_git]
+symbol = ""
+style = "fg:sapphire bg:base"
+format = '[$symbol]($style)'
+when = "test ! $(git rev-parse --is-inside-work-tree 2> /dev/null)"
+shell = ["zsh", "--no-rcs"]
+ignore_timeout = true
+
+[git_branch]
+symbol = ""
+style = "fg:blue"
+format = '[ $symbol $branch]($style)'
+
+[git_status]
+style = ""
+format = '[($all_status$ahead_behind) ]($style)[](fg:base2)'
+untracked = '[ ](text)'
+staged = '[ ](green)'
+modified = '[ ](yellow)'
+ahead = '[ ⇡${count}](green)'
+diverged = '[  ⇡${ahead_count}⇣${behind_count}](text)'
+behind = '[ ⇣${count}]'
+deleted = '[ ](red)'
+stashed = ''
+renamed = ''
+
+[nodejs]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[c]
+symbol = " "
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[golang]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[php]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[kotlin]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[haskell]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[python]
+symbol = ""
+style = "fg:green"
+format = '[ $symbol( $version) ]($style)'
+
+[docker_context]
+symbol = ""
+style = "fg:peach"
+format = '[ $symbol  $context ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "fg:subtext0"
+format = '[   $time]($style)'
+
+[line_break]
+disabled = false 
+
+[kubernetes]
+symbol = "󰠳 "
+format = "[ $symbol$context]($style) [\\[$namespace\\] ](fg:pink)"
+style = "fg:mauve italic"
+disabled = false
+detect_env_vars = ["KUBECONFIG"]
+
+[character]
+disabled = true
+success_symbol = '[✤ ](bold fg:green)'
+error_symbol = '[✤ ](bold fg:red)'
+vimcmd_symbol = '[  ](bold fg:sky)'
+vimcmd_replace_one_symbol = '[ ](bold fg:lavender)'
+vimcmd_replace_symbol = '[ ](bold fg:lavender)'
+vimcmd_visual_symbol = '[ ](bold fg:lavender)'
+
+[custom.emoji]
+description = "Displays a (pseudo) random emoji for each prompt"
+command = "EMOJIS=(  󱜿     ); EMOJI_INDEX=$(( $RANDOM % 7 + 1 )); EMOJI=${EMOJIS[$EMOJI_INDEX]}; [ $EXIT_CODE -eq 0 ] && echo -e \"\\033[0;32m$EMOJI\\033[0m\" || echo -e \"\\033[0;31m$EMOJI\\033[0m\""
+when = "true"
+shell = ["zsh", "--no-rcs"]
+format = "$output"
+ignore_timeout = true
+
+[custom.direnv]
+format = "[ ]($style)"
+style = "fg:yellow"
+when = "env | grep -E '^DIRENV_FILE='"
+ignore_timeout = true

@@ -7,5 +7,6 @@
     # ./kitty
     ./tmux.nix
     ./zed.nix
+    ./neovim.nix
   ];
 }

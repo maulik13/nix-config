@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +59,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-bundle,
+      catppuccin,
       ...
     }@inputs:
     let

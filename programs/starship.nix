@@ -4,24 +4,21 @@
   lib,
   ...
 }:
-with lib;
 let
   cfg = config.my.programs.starship;
 in
 {
   options.my.programs.starship = {
-    enable = mkEnableOption "My starship configuration";
+    enable = lib.mkEnableOption "My starship configuration";
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
-
-      settings = lib.readFile ../config/starship/clean.toml;
     };
     xdg.configFile."starship.toml" = {
-      souce = ../config/starship/clean.toml;
+      source = ../config/starship/clean.toml;
     };
   };
 }

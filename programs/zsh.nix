@@ -16,16 +16,15 @@ in
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
-
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      enableCompletion = true;
       oh-my-zsh = {
         enable = true;
         plugins = [
           "git"
           "kubectl"
           "docker"
-          "zsh-autosuggestions"
-          "zsh-syntax-highlighting"
-          "zsh-completions"
         ];
       };
 
@@ -48,6 +47,8 @@ in
           fd --type=d --hidden --exclude .git . "$1"
         }
 
+        source <(switcher init zsh)
+        [[ -f ~/.config/diaball/fns.sh ]] && source ~/.config/diaball/fns.sh
       '';
     };
   };

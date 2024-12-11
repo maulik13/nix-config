@@ -7,6 +7,7 @@
 {
   imports = [
     ../programs
+    inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
   home.username = "maulik";
@@ -22,12 +23,12 @@
 
     # Programming
     vim
-    neovim
     nodejs
     cargo
     nixfmt-rfc-style
     kcl
     kubeswitch
+    k9s
 
     # Other stuff
     asciinema
@@ -41,8 +42,10 @@
   # The options are defined in /programs/*
   my.programs = {
     zsh.enable = true;
+    starship.enable = true;
     git.enable = true;
     tmux.enable = true;
+    neovim.enable = true;
   };
 
   # Enables programs that I don't have a more complicated config for.
@@ -75,9 +78,6 @@
 
     fzf = {
       enable = true;
-      defaultOptions = [
-        # "--height ~40%"
-      ];
     };
 
     gh = {
@@ -104,5 +104,26 @@
       source = ./../config/peaclock/config;
       target = "peaclock/config";
     };
+  };
+
+  home.shellAliases = {
+    smerge = "/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge";
+
+    # k8s
+    kgdsec = "kubectl get secret $1 -o go-template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\n\"}}{{end}}'";
+    kctx = "switch";
+    kns = "switch ns";
+
+    awsp = "export AWS_PROFILE=$(sed -n \"s/\[profile \(.*\)\]/\1/gp\" ~/.aws/config | fzf)";
+
+    azswitch = "az account list | jq -r '.[] | [.id, .name] | @tsv' | fzf | cut -d$'\t' -f1 | xargs -I{} az account set --subscription {}";
+
+    # Node development
+    p = "pnpm";
+    zj = "zellij -l welcome";
+    pclock = "LC_ALL=C peaclock --config-dir ~/.config/peaclock";
+    cd = "z";
+    lgit = "lazygit --use-config-file=\"$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/themes/macchiato/peach.yml\"";
+
   };
 }

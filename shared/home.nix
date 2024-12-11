@@ -89,10 +89,18 @@
 
     bat = {
       enable = true;
-      config.theme = "gruvbox-dark";
+      config.theme = "catppuccin-macchiato";
     };
 
     lazygit.enable = true;
+
+    k9s = {
+      enable = true;
+      catppuccin = {
+        enable = true;
+        transparent = true;
+      };
+    };
 
   };
 
@@ -104,6 +112,11 @@
       source = ./../config/peaclock/config;
       target = "peaclock/config";
     };
+  };
+
+  # Catppuccin magic
+  catppuccin = {
+    flavor = "macchiato";
   };
 
   home.shellAliases = {

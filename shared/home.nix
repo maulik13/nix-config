@@ -117,6 +117,10 @@
       source = ./../config/peaclock/config;
       target = "peaclock/config";
     };
+
+    configFile."diaball/fns.sh" = {
+      source = ./../config/diaball/fns.sh;
+    };
   };
 
   # Catppuccin magic

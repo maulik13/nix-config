@@ -49,6 +49,17 @@ in
 
         source <(switcher init zsh)
         [[ -f ~/.config/diaball/fns.sh ]] && source ~/.config/diaball/fns.sh
+
+        function add_newline_btw_prompts() {
+          precmd() {
+            echo
+          }
+        }
+
+        # autoload -Uz add-zsh-hook
+        add-zsh-hook precmd set_title_precmd
+        add-zsh-hook precmd add_newline_btw_prompts
+        add-zsh-hook preexec set_title_preexec
       '';
     };
   };

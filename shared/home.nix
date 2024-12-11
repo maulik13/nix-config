@@ -53,14 +53,6 @@
   programs = {
     home-manager.enable = true;
 
-    broot = {
-      enable = true;
-      settings = {
-        imports = [ "skins/catppuccin-macchiato.hjson" ];
-        enable_kitty_keyboard = lib.mkForce true;
-      };
-    };
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -104,6 +96,13 @@
       catppuccin = {
         enable = true;
         transparent = true;
+      };
+    };
+
+    yazi = {
+      enable = true;
+      catppuccin = {
+        enable = true;
       };
     };
 

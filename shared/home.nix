@@ -56,7 +56,7 @@
     broot = {
       enable = true;
       settings = {
-        imports = [ "skins/dark-gruvbox.hjson" ];
+        imports = [ "skins/catppuccin-macchiato.hjson" ];
         enable_kitty_keyboard = lib.mkForce true;
       };
     };
@@ -82,17 +82,22 @@
 
     gh = {
       enable = true;
-
       # Required because of a settings migration
       settings.version = 1;
     };
 
     bat = {
       enable = true;
-      config.theme = "catppuccin-macchiato";
+      catppuccin.enable = true;
     };
 
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      catppuccin = {
+        enable = true;
+        accent = "peach";
+      };
+    };
 
     k9s = {
       enable = true;

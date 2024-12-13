@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     # Tooling
-    jq
+    ripgrep
     yazi
     _1password-cli
 
@@ -46,6 +46,7 @@
     git.enable = true;
     tmux.enable = true;
     neovim.enable = true;
+    yabai.enable = true;
   };
 
   # Enables programs that I don't have a more complicated config for.

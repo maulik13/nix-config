@@ -8,5 +8,6 @@
     ./tmux.nix
     ./zed.nix
     ./neovim.nix
+    ./yabai.nix
   ];
 }

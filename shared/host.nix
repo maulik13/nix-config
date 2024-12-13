@@ -13,6 +13,8 @@
 
   environment.systemPackages = with pkgs; [
     home-manager
+    jq
+    yq
   ];
 
   nix.nixPath = lib.mkForce [

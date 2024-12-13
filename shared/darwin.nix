@@ -3,12 +3,17 @@
 {
   # This modifies /etc/shells file, take this later
   # environment.shells = [ pkgs.zsh ];
+  #
+  services = {
+    yabai.enable = true;
+    skhd.enable = true;
+  };
 
   system.defaults = {
     dock = {
       autohide = true;
       orientation = "left";
-      tilesize = 36;
+      tilesize = 56;
     };
     finder = {
       AppleShowAllExtensions = true;

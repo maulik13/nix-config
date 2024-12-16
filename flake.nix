@@ -25,26 +25,6 @@
 
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
-
-    # nix-homebrew allows you to configure homebrew declaratively, so the taps
-    # can be managed by nix as well. Keeps all versions predictable!
-    nix-homebrew = {
-      url = "github:zhaofengli/nix-homebrew";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    homebrew-bundle = {
-      url = "github:homebrew/homebrew-bundle";
-      flake = false;
-    };
   };
 
   # In this context, outputs are mostly about getting home-manager what it
@@ -54,11 +34,7 @@
       nixpkgs,
       darwin,
       home-manager,
-      nix-homebrew,
       flake-utils,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-bundle,
       catppuccin,
       ...
     }@inputs:

@@ -9,5 +9,6 @@
     ./zed.nix
     ./neovim.nix
     ./yabai.nix
+    ./skhd.nix
   ];
 }

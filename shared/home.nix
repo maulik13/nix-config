@@ -23,7 +23,7 @@
 
     # Programming
     vim
-    nodejs
+    nodejs_22
     cargo
     nixfmt-rfc-style
     kcl

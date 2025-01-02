@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-script_folder=$(realpath $0 | xargs dirname)
-
 # necessary to load scripting-addition during startup on macOS Big Sur
 # *yabai --load-sa* is configured to run through sudo without a password
 sudo yabai --load-sa
@@ -34,7 +32,7 @@ yabai -m config left_padding 12
 yabai -m config right_padding 12
 yabai -m config window_gap 16
 
-source $script_folder/fns.sh
+source $HOME/.config/yabai/fns.sh
 load
 
 # signals

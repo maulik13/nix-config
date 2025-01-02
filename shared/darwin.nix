@@ -1,10 +1,12 @@
 { pkgs, ... }:
 
 {
+  imports = [ ../darwin ];
   # This modifies /etc/shells file, take this later
   # environment.shells = [ pkgs.zsh ];
   #
-  services = {
+
+  my.programs = {
     yabai.enable = true;
     skhd.enable = true;
   };

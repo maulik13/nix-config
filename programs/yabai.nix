@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -9,15 +8,14 @@ let
 in
 {
   options.my.programs.yabai = {
-    enable = lib.mkEnableOption "My yabai configuration";
+    enable = lib.mkEnableOption "My yabai home configuration";
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.configFile = {
-      "yabai/yabairc".source = ./../config/yabai/yabairc;
-      "yabai/fns.sh".source = ./../config/yabai/fns.sh;
-      "yabai/spaces.sh".source = ./../config/yabai/spaces.sh;
-      "yabai/rules.sh".source = ./../config/yabai/rules.sh;
-    };
+    # xdg.configFile = {
+    #   "yabai/fns.sh".source = ./../config/yabai/fns.sh;
+    #   "yabai/spaces.sh".source = ./../config/yabai/spaces.sh;
+    #   "yabai/rules.sh".source = ./../config/yabai/rules.sh;
+    # };
   };
 }

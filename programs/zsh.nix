@@ -49,6 +49,7 @@ in
 
         source <(switcher init zsh)
         [[ -f ~/.config/diaball/fns.sh ]] && source ~/.config/diaball/fns.sh
+        [[ -f ~/.config/diaball/apikeys.sh.sh ]] && source ~/.config/diaball/apikeys.sh
 
         function add_newline_btw_prompts() {
           precmd() {

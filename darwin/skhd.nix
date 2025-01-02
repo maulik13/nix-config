@@ -1,10 +1,10 @@
 { config, lib, ... }:
 
 let
-  cfg = config.my.programs.skhd;
+  cfg = config.my.services.skhd;
 in
 {
-  options.my.programs.skhd = {
+  options.my.services.skhd = {
     enable = lib.mkEnableOption "My skhd configuration";
   };
 

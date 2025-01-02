@@ -12,10 +12,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # xdg.configFile = {
-    #   "yabai/fns.sh".source = ./../config/yabai/fns.sh;
-    #   "yabai/spaces.sh".source = ./../config/yabai/spaces.sh;
-    #   "yabai/rules.sh".source = ./../config/yabai/rules.sh;
-    # };
+    xdg.configFile = {
+      "yabai/fns.sh".source = ./../config/yabai/fns.sh;
+      "yabai/spaces.sh".source = ./../config/yabai/spaces.sh;
+      "yabai/rules.sh".source = ./../config/yabai/rules.sh;
+    };
   };
 }

@@ -6,7 +6,7 @@
   # environment.shells = [ pkgs.zsh ];
   #
 
-  my.programs = {
+  my.services = {
     yabai.enable = true;
     skhd.enable = true;
   };

@@ -16,6 +16,5 @@
 
   my.programs = {
     yabai.enable = true;
-    skhd.enable = true;
   };
 }

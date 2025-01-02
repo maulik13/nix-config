@@ -100,11 +100,11 @@ in
 
         meh - g : yabai -m rule --apply
 
-        # Restart Yabai
+        # Reload yabai rules and spaces
         shift + lctrl + alt - r : 
             /usr/bin/env osascript <<< \
-                "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-            yabai --restart-service
+                "display notification \"Reloading yabai config\""; \
+            source ~/.config/yabai/fns.sh; load 
 
         # Restart Sketchybar
         shift + lctrl + alt - b : 

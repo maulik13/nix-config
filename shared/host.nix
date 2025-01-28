@@ -17,6 +17,11 @@
     yq
   ];
 
+  # services.postgresql = {
+  #   enable = true;
+  #   package = pkgs.postgresql_16;
+  # };
+
   nix.nixPath = lib.mkForce [
     "nixpkgs=${inputs.nixpkgs}"
     "home-manager=${inputs.home-manager}"

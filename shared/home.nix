@@ -17,6 +17,7 @@
     ripgrep
     yazi
     _1password-cli
+    fd
 
     # Terminal
     starship
@@ -29,6 +30,8 @@
     kcl
     kubeswitch
     k9s
+    upbound
+    crossplane-cli
 
     # Other stuff
     asciinema

@@ -56,7 +56,6 @@
         host:
         darwin.lib.darwinSystem {
           system = host.arch;
-
           modules = [
             home-manager.darwinModules.home-manager
             (home-manager-user {

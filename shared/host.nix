@@ -11,12 +11,6 @@
   # ];
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-  environment.systemPackages = with pkgs; [
-    home-manager
-    jq
-    yq
-  ];
-
   # services.postgresql = {
   #   enable = true;
   #   package = pkgs.postgresql_16;
@@ -32,31 +26,12 @@
       "nix-command"
       "flakes"
     ];
-    trusted-substituters = [
-      "https://helix.cachix.org"
-      "https://cache.nixos.org"
-    ];
-    trusted-public-keys = [
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-    ];
     trusted-users = [
       "root"
       "@admin"
     ];
   };
-
-  nix.registry = {
-    # Latest nix-darwin breaks this and I can't be bothered to fix it right now
-    # nixpkgs.flake = lib.mkForce inputs.nixpkgs-unstable;
-
-    # inputs.self is a reference to this flake, which allows self-references.
-    # In this case, adding this flake to the registry under the name `my`,
-    # which is the name I use any time I'm customising stuff.
-    # (at time of writing, this is only used for `nix flake init -t my#...`)
-    my.flake = inputs.self;
-  };
-
-  nix.channel.enable = false;
+  nix.optimise.automatic = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -71,6 +46,12 @@
     zsh.enable = true;
     gnupg.agent.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    home-manager
+    jq
+    yq
+  ];
 
   # Import the kubeswitch module directly
 

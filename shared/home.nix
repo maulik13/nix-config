@@ -27,10 +27,10 @@
     nodejs_22
     cargo
     nixfmt-rfc-style
-    kcl
     kubeswitch
     k9s
     upbound
+    kcl
     crossplane-cli
 
     # Other stuff
@@ -83,32 +83,32 @@
 
     bat = {
       enable = true;
-      catppuccin.enable = true;
     };
 
     lazygit = {
       enable = true;
-      catppuccin = {
-        enable = true;
-        accent = "peach";
-      };
     };
 
     k9s = {
       enable = true;
-      catppuccin = {
-        enable = true;
-        transparent = true;
-      };
     };
 
     yazi = {
       enable = true;
-      catppuccin = {
-        enable = true;
-      };
     };
+  };
 
+  catppuccin = {
+    bat.enable = true;
+    lazygit = {
+      enable = true;
+      accent = "peach";
+    };
+    k9s = {
+      enable = true;
+      transparent = true;
+    };
+    yazi.enable = true;
   };
 
   # lib.mkIf pkgs.stdenvNoCC.isDarwin

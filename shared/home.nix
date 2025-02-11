@@ -73,6 +73,11 @@
 
     fzf = {
       enable = true;
+      defaultOptions = [
+        "--height 40%"
+        "--border"
+        "--cycle"
+      ];
       defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
       fileWidgetCommand = "fd --type f --follow --exclude .git";
       changeDirWidgetCommand = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";

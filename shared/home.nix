@@ -25,6 +25,7 @@
     # Programming
     vim
     nodejs_22
+    pnpm
     cargo
     nixfmt-rfc-style
     kubeswitch

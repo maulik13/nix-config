@@ -16,6 +16,9 @@ in
   config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;

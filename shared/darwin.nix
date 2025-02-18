@@ -51,6 +51,7 @@
     # Automatic dark mode at night
     AppleInterfaceStyleSwitchesAutomatically = true;
     AppleShowAllExtensions = true;
+    ApplePressAndHoldEnabled = false;
 
     # Enables using the function keys as the F<number> key instead of OS controls
     "com.apple.keyboard.fnState" = false;

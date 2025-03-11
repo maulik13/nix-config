@@ -1,4 +1,4 @@
-{ osConfig, ... }:
+{ osConfig, pkgs, ... }:
 {
   imports = [
     ../../shared/home.nix

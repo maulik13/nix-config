@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  update-osx:
+    desc: Update osx system
+    cmds:
+      - nix run nix-darwin -- switch --flake .
+
+  update-pkgs:
+    desc: Update upstream
+    cmds:
+      - nix flake update

@@ -49,6 +49,7 @@
     home-manager
     jq
     yq
+    claude-code
   ];
 
   # Import the kubeswitch module directly

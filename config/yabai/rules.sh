@@ -15,7 +15,7 @@ yabai -m rule --add app="^pgAdmin 4$" space=code2
 yabai -m rule --add app="^Postman$" space=code2
 
 yabai -m rule --add app="^Google Chrome$" title="Maulik$" space=browse1
-yabai -m rule --add app="^Notion$" title="Maulik$" space=browse1
+yabai -m rule --add app="^Notion$" space=browse1
 yabai -m rule --add app="^Google Chrome$" title!="Maulik$" space=browse2
 yabai -m rule --add app="^Firefox$" space=browse2
 
@@ -23,11 +23,11 @@ yabai -m rule --add app="^Slack$" space=comm
 yabai -m rule --add app="^Microsoft Outlook$" space=comm
 yabai -m rule --add app="^Microsoft Teams$" space=comm
 
-yabai -m rule --add app="^1Password$" space=misc
+yabai -m rule --add app="^1Password$" space=misc manage=off
 yabai -m rule --add app="^Music$" space=misc
-yabai -m rule --add app="^Messages$" space=misc
-yabai -m rule --add app="^WhatsApp$" space=misc
-yabai -m rule --add app="^Telegram$" space=misc
+yabai -m rule --add app="^Messages$" space=misc manage=off
+yabai -m rule --add app="^WhatsApp$" space=misc manage=off
+yabai -m rule --add app="^Telegram$" space=misc manage=off
 
 # Layout management exceptions
 yabai -m rule --add app="^System Settings$" manage=off

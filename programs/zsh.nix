@@ -34,6 +34,7 @@ in
         export GOROOT="$(brew --prefix golang)/libexec"
         export PATH="$PATH:''${GOPATH}/bin:''${GOROOT}/bin"
 
+        export PATH="''${KREW_ROOT:-''$HOME/.krew}/bin:$PATH"
         source <(switcher init zsh)
         [[ -f ~/.config/diaball/fns.sh ]] && source ~/.config/diaball/fns.sh
         [[ -f ~/.config/diaball/apikeys.sh.sh ]] && source ~/.config/diaball/apikeys.sh

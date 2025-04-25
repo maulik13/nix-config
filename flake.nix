@@ -36,6 +36,10 @@
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # In this context, outputs are mostly about getting home-manager what it
@@ -55,7 +59,7 @@
         { user, path }:
         {
           home-manager = {
-            backupFileExtension = ".bu";
+            backupFileExtension = "bu";
             useUserPackages = true;
             useGlobalPkgs = true;
             users.${user} = import path;

@@ -49,17 +49,17 @@ in
         yabai -m config right_padding 12
         yabai -m config window_gap 16
 
-                source $HOME/.config/yabai/fns.sh
-                load
+        source $HOME/.config/yabai/fns.sh
+        load
 
-                # signals
-                yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+        # signals
+        yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 
-                # On display change, reapply rules
-                yabai -m signal --add event=display_added action="source $HOME/.config/yabai/fns.sh; load"
-                yabai -m signal --add event=display_removed action="source $HOME/.config/yabai/fns.sh; load"
+        # On display change, reapply rules
+        yabai -m signal --add event=display_added action="source $HOME/.config/yabai/fns.sh; load"
+        yabai -m signal --add event=display_removed action="source $HOME/.config/yabai/fns.sh; load"
 
-                borders &
+        borders &
       '';
     };
   };

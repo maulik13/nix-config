@@ -51,6 +51,7 @@
     git.enable = true;
     tmux.enable = true;
     neovim.enable = true;
+    firefox.enable = true;
   };
 
   # Enables programs that I don't have a more complicated config for.
@@ -114,8 +115,19 @@
 
   textfox = {
     enable = true;
+    useLegacyExtensions = false;
     profile = "terminal-textfox";
-    config = { };
+    # extensions.packages = with inputs.firefox-addons; [
+    #   "1password"
+    #   lastpass
+    # ];
+    config = {
+      displayWindowControls = true;
+      displayNavButtons = true;
+      displayUrlbarIcons = true;
+      sidebery = {
+      };
+    };
   };
 
   catppuccin = {

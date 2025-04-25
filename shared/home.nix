@@ -7,7 +7,7 @@
 {
   imports = [
     ../programs
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   home.username = "maulik";

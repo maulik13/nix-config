@@ -8,6 +8,7 @@
   imports = [
     ../programs
     inputs.catppuccin.homeModules.catppuccin
+    inputs.textfox.homeManagerModules.default
   ];
 
   home.username = "maulik";
@@ -109,6 +110,12 @@
     yazi = {
       enable = true;
     };
+  };
+
+  textfox = {
+    enable = true;
+    profile = "Firefox terminal profile using textfox";
+    config = { };
   };
 
   catppuccin = {

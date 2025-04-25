@@ -10,7 +10,6 @@ in
   imports = [
     ../../shared/host.nix
     ../../shared/darwin.nix
-    ../../shared/brew.nix
   ];
 
   users.users.maulik = {

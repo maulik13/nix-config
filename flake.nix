@@ -22,6 +22,17 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
@@ -44,6 +55,7 @@
         { user, path }:
         {
           home-manager = {
+            backupFileExtension = ".bu";
             useUserPackages = true;
             useGlobalPkgs = true;
             users.${user} = import path;

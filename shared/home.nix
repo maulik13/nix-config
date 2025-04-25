@@ -114,7 +114,7 @@
 
   textfox = {
     enable = true;
-    profile = "Firefox terminal profile using textfox";
+    profile = "terminal-textfox";
     config = { };
   };
 

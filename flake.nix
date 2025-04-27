@@ -56,7 +56,10 @@
     let
       hosts = import ./config/hosts.nix;
       home-manager-user =
-        { user, path }:
+        {
+          user,
+          path,
+        }:
         {
           home-manager = {
             backupFileExtension = "bu";

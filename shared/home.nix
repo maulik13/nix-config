@@ -116,11 +116,7 @@
   textfox = {
     enable = true;
     useLegacyExtensions = false;
-    profile = "terminal-textfox";
-    # extensions.packages = with inputs.firefox-addons; [
-    #   "1password"
-    #   lastpass
-    # ];
+    profile = "tui-textfox";
     config = {
       displayWindowControls = true;
       displayNavButtons = true;
@@ -130,8 +126,10 @@
     };
   };
 
+  # Catppuccin magic
   catppuccin = {
     bat.enable = true;
+    flavor = "macchiato";
     lazygit = {
       enable = true;
       accent = "peach";
@@ -155,11 +153,6 @@
     configFile."diaball/fns.sh" = {
       source = ./../config/diaball/fns.sh;
     };
-  };
-
-  # Catppuccin magic
-  catppuccin = {
-    flavor = "macchiato";
   };
 
   home.shellAliases = {

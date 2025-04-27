@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 let
@@ -15,9 +16,21 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      extensions = with pkgs.inputs.firefox-addons; [
-        vimium
-      ];
+      profiles = {
+        "tui-textfox" = {
+          name = "tui-textfox";
+          isDefault = true;
+          extensions.packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+            vimium
+            firefox-color
+            onepassword-password-manager
+            lastpass-password-manager
+          ];
+          settings = {
+            extensions.autoDisableScopes = 0;
+          };
+        };
+      };
     };
   };
 }

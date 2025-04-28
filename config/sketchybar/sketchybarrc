@@ -1,0 +1,63 @@
+#!/bin/bash
+# Search for icons here: https://www.nerdfonts.com/cheat-sheet
+#                          ﱦ 齃     ﮂ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ
+
+source "$HOME/.config/sketchybar/colors/catppuccin.sh"
+source "$HOME/.config/sketchybar/common.sh"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+ITEM_DIR="$HOME/.config/sketchybar/items"
+
+############## BAR ##############
+sketchybar --bar height=44 \
+  blur_radius=30 \
+  position=top \
+  sticky=off \
+  padding_left=12 \
+  padding_right=12 \
+  y_offset=4 \
+  margin=0 \
+  corner_radius=0 \
+  color=$TRANSPARENT \
+  border_width=0 \
+  shadow=off
+
+# s############## GLOBAL DEFAULTS ##############
+sketchybar --default \
+  icon.font="SF Symbols:SemiBold:20.0" \
+  icon.y_offset=1 \
+  icon.color=$ITEM_COLOR \
+  label.font="SF Mono:Medium:16.0" \
+  label.color=$ITEM_COLOR \
+  background.color=$ITEM_BG_COLOR \
+  background.corner_radius=5 \
+  background.height=24 \
+  background.padding_left=2 background.padding_right=2 \
+  padding_left=4 padding_right=4 \
+  label.padding_left=4 label.padding_right=8 \
+  icon.padding_left=8 icon.padding_right=4
+
+##### Adding Menu #####
+
+# Left side
+source $ITEM_DIR/os-icon.sh
+add_separator sep.l1 left 8
+source $ITEM_DIR/spaces.sh
+add_separator sep.l2 left
+source $ITEM_DIR/space_add.sh
+
+# Center
+source $ITEM_DIR/front_app.sh
+source $ITEM_DIR/media.sh
+add_group_bg grp_center 'front_app media'
+
+#Right side
+source $ITEM_DIR/timedate.sh
+add_separator sep.r1 right
+source $ITEM_DIR/system.sh
+add_separator sep.r2 right
+source $ITEM_DIR/productivity.sh
+
+sketchybar --update
+
+echo "sketchybar configuration loaded..."

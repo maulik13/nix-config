@@ -9,6 +9,7 @@
   my.services = {
     yabai.enable = true;
     skhd.enable = true;
+    sketchybar.enable = true;
   };
 
   system.defaults = {

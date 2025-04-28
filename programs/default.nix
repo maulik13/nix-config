@@ -4,7 +4,7 @@
     ./zsh.nix
     ./starship.nix
     ./git.nix
-    # ./kitty
+    ./kitty
     ./tmux.nix
     ./zed.nix
     ./neovim.nix

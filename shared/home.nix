@@ -52,6 +52,7 @@
     tmux.enable = true;
     neovim.enable = true;
     firefox.enable = true;
+    kitty.enable = true;
   };
 
   # Enables programs that I don't have a more complicated config for.

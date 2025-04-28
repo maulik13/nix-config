@@ -82,6 +82,15 @@
               path = ./systems/${host.dir}/home.nix;
             })
             ./systems/${host.dir}/host.nix
+            {
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.config.allowUnfreePredicate =
+                pkg:
+                builtins.elem (nixpkgs.lib.getName pkg) [
+                  "onepassword-password-manager"
+                  "lastpass-password-manager"
+                ];
+            }
           ];
           specialArgs = {
             inherit inputs;

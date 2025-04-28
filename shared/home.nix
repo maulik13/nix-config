@@ -113,19 +113,6 @@
     };
   };
 
-  textfox = {
-    enable = true;
-    useLegacyExtensions = false;
-    profile = "tui-textfox";
-    config = {
-      displayWindowControls = true;
-      displayNavButtons = true;
-      displayUrlbarIcons = true;
-      sidebery = {
-      };
-    };
-  };
-
   # Catppuccin magic
   catppuccin = {
     bat.enable = true;

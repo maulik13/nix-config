@@ -4,7 +4,7 @@ tasks:
   update-osx:
     desc: Update osx system
     cmds:
-      - nix run nix-darwin -- switch --flake .
+      - NIXPKGS_ALLOW_UNFREE=1 nix run nix-darwin -- switch --flake . --impure
 
   update-pkgs:
     desc: Update upstream

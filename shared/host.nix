@@ -49,7 +49,9 @@
     home-manager
     jq
     yq
+    go-task
     claude-code
+    gnupg
   ];
 
   # Import the kubeswitch module directly

@@ -33,6 +33,10 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+    felixkratz-formulae = {
+      url = "github:FelixKratz/homebrew-formulae";
+      flake = false;
+    };
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
@@ -51,6 +55,7 @@
       home-manager,
       flake-utils,
       catppuccin,
+      nix-homebrew,
       ...
     }@inputs:
     let
@@ -82,14 +87,21 @@
               path = ./systems/${host.dir}/home.nix;
             })
             ./systems/${host.dir}/host.nix
+            nix-homebrew.darwinModules.nix-homebrew
             {
-              nixpkgs.config.allowUnfree = true;
-              nixpkgs.config.allowUnfreePredicate =
-                pkg:
-                builtins.elem (nixpkgs.lib.getName pkg) [
-                  "onepassword-password-manager"
-                  "lastpass-password-manager"
-                ];
+              nix-homebrew = {
+                # Install Homebrew under the default prefix
+                enable = true;
+                # User owning the Homebrew prefix
+                user = host.user;
+
+                # Optional: Declarative tap management
+                taps = with inputs; {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "FelixKratz/homebrew-formulae" = felixkratz-formulae;
+                };
+              };
             }
           ];
           specialArgs = {

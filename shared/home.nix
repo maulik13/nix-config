@@ -24,6 +24,7 @@
     starship
 
     # Programming
+    devbox
     vim
     nodejs_22
     pnpm

@@ -109,7 +109,7 @@ let
   themeConfig = ''
     theme "rose-pine-moon"
   '';
-  staticConfig = builtins.readFile ./config.kdl;
+  staticConfig = builtins.readFile ./../config/zellij/static.kdl;
   platformSpecificConfig = strings.optionalString stdenv.isDarwin ''copy_command "pbcopy"'';
   configText = lib.concatLines [
     themeConfig

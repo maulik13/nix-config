@@ -40,6 +40,9 @@
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+    };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

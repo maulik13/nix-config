@@ -20,10 +20,11 @@ $scala\
 $conda\
 $python\
 $time  \
-[󱞪](fg:iris) \
-"""
+$line_break\
+$character"""
 
 palette = "rose-pine-moon"
+add_newline = false
 
 [palettes.rose-pine-moon]
 overlay = '#393552'
@@ -165,3 +166,15 @@ style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
 disabled = false
 symbol = '🅒 '
+
+[character]
+success_symbol = '[󱞪 ](bold fg:foam)'
+error_symbol = '[󱞪 ](bold fg:love)'
+vimcmd_symbol = '[  ](bold fg:foam)'
+vimcmd_replace_one_symbol = '[ ](bold fg:iris)'
+vimcmd_replace_symbol = '[ ](bold fg:iris)'
+vimcmd_visual_symbol = '[ ](bold fg:iris)'
+
+[line_break]
+disabled = false 
+

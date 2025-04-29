@@ -54,6 +54,7 @@
     neovim.enable = true;
     firefox.enable = true;
     kitty.enable = true;
+    zellij.enable = true;
   };
 
   # Enables programs that I don't have a more complicated config for.
@@ -158,7 +159,6 @@
 
     # Node development
     p = "pnpm";
-    zj = "zellij -l welcome";
     pclock = "LC_ALL=C peaclock --config-dir ~/.config/peaclock";
     cd = "z";
     lgit = "lazygit --use-config-file=\"$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/themes/macchiato/peach.yml\"";

@@ -11,5 +11,6 @@
     ./firefox.nix
     ./yabai.nix
     ./sketchybar.nix
+    ./zellij.nix
   ];
 }

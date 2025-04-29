@@ -59,10 +59,20 @@
       flake-utils,
       catppuccin,
       nix-homebrew,
+      zjstatus,
       ...
     }@inputs:
     let
       hosts = import ./config/hosts.nix;
+      baseOverlays = [
+        (final: prev: {
+          zjstatus = zjstatus.packages.${prev.system}.default;
+        })
+      ];
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
       home-manager-user =
         {
           user,
@@ -81,8 +91,16 @@
         };
       mkDarwinConfig =
         host:
-        darwin.lib.darwinSystem {
+        let
           system = host.arch;
+          pkgs = import nixpkgs {
+            inherit system config;
+            overlays = baseOverlays;
+          };
+        in
+        darwin.lib.darwinSystem {
+          inherit pkgs;
+          inherit system;
           modules = [
             home-manager.darwinModules.home-manager
             (home-manager-user {
@@ -93,11 +111,8 @@
             nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
-                # Install Homebrew under the default prefix
                 enable = true;
-                # User owning the Homebrew prefix
                 user = host.user;
-
                 # Optional: Declarative tap management
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;

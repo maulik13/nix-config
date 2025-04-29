@@ -18,7 +18,7 @@ in
       enableZshIntegration = true;
     };
     xdg.configFile."starship.toml" = {
-      source = ../config/starship/clean.toml;
+      source = ../config/starship/rose-pine-moon.toml;
     };
   };
 }

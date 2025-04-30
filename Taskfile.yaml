@@ -2,7 +2,12 @@ version: "3"
 
 tasks:
   update-osx:
-    desc: Update osx system
+    desc: Update OSX system
+    cmds:
+      - nix run nix-darwin -- switch --flake .
+
+  update-osx-impure:
+    desc: Update OSX system
     cmds:
       - NIXPKGS_ALLOW_UNFREE=1 nix run nix-darwin -- switch --flake . --impure
 

@@ -43,10 +43,7 @@
     zjstatus = {
       url = "github:dj95/zjstatus";
     };
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/nur";
   };
 
   # In this context, outputs are mostly about getting home-manager what it
@@ -60,6 +57,7 @@
       catppuccin,
       nix-homebrew,
       zjstatus,
+      nur,
       ...
     }@inputs:
     let
@@ -68,6 +66,7 @@
         (final: prev: {
           zjstatus = zjstatus.packages.${prev.system}.default;
         })
+        nur.overlays.default
       ];
       config = {
         allowUnfree = true;

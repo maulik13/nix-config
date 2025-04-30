@@ -53,7 +53,7 @@ in
           isDefault = true;
           extensions = {
             force = true;
-            packages = with inputs.firefox-addons.packages.${pkgs.system}; [
+            packages = with pkgs.nur.repos.rycee.firefox-addons; [
               vimium
               firefox-color
               onepassword-password-manager

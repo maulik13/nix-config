@@ -22,19 +22,26 @@
 
     # Terminal
     starship
+    vim
 
     # Programming
     devbox
-    vim
     nodejs_22
     pnpm
     cargo
     nixfmt-rfc-style
-    kubeswitch
-    k9s
     upbound
     kcl
     crossplane-cli
+
+    # Ops
+    k9s
+    kubeswitch
+    kubelogin
+
+    # Cloud
+    azure-cli
+    awscli2
 
     # Other stuff
     asciinema

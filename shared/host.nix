@@ -11,11 +11,6 @@
   # ];
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
 
-  # services.postgresql = {
-  #   enable = true;
-  #   package = pkgs.postgresql_16;
-  # };
-
   nix.nixPath = lib.mkForce [
     "nixpkgs=${inputs.nixpkgs}"
     "home-manager=${inputs.home-manager}"
@@ -52,7 +47,18 @@
     go-task
     claude-code
     gnupg
+    postgresql_15
   ];
+
+  config.services = {
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql_15;
+      initialScript = ''
+        CREATE ROLE maulik WITH LOGIN PASSWORD 'maulik';
+      '';
+    };
+  };
 
   # Import the kubeswitch module directly
 

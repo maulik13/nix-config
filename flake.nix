@@ -37,6 +37,10 @@
       url = "github:FelixKratz/homebrew-formulae";
       flake = false;
     };
+    kcl-lang = {
+      url = "github:kcl-lang/homebrew-tap";
+      flake = false;
+    };
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
@@ -117,6 +121,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "FelixKratz/homebrew-formulae" = felixkratz-formulae;
+                  "kcl-lang/homebrew-tap" = kcl-lang;
                 };
               };
             }

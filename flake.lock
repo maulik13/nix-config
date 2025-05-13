@@ -250,6 +250,22 @@
         "type": "github"
       }
     },
+    "kcl-lang": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739527776,
+        "narHash": "sha256-S+T7W0Onf0nKNwr/2FNaKtWaUXlqMprxCHGhUCNSo/o=",
+        "owner": "kcl-lang",
+        "repo": "homebrew-tap",
+        "rev": "2efb73d6478cb5f4f648815b0a48ef5149d879d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kcl-lang",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": "nixpkgs_5"
@@ -491,6 +507,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "kcl-lang": "kcl-lang",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_7",
         "nur": "nur",

@@ -25,16 +25,18 @@
     vim
 
     # Programming
+    nixfmt-rfc-style
     devbox
     nodejs_22
     pnpm
     cargo
-    nixfmt-rfc-style
     upbound
     kcl
     crossplane-cli
 
     # Ops
+    kubectl
+    helm
     k9s
     kubeswitch
     kubelogin

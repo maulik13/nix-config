@@ -3,9 +3,6 @@
   inputs,
   ...
 }:
-let
-  language = _: t: t;
-in
 {
   imports = [
     ../../shared/host.nix

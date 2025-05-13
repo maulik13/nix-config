@@ -19,6 +19,7 @@ $rust\
 $scala\
 $conda\
 $python\
+$kubernetes\
 $time  \
 $line_break\
 $character"""
@@ -161,11 +162,12 @@ format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = ' '
 
-[conda]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
+[kubernetes]
+symbol = "󰠳 "
+format = "[ $symbol$context]($style) [\\[$namespace\\] ](fg:foam)"
+style = "fg:rose italic"
 disabled = false
-symbol = '🅒 '
+detect_env_vars = ["KUBECONFIG"]
 
 [character]
 success_symbol = '[󱞪 ](bold fg:foam)'

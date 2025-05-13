@@ -9,6 +9,7 @@
   homebrew.brews = [
     "borders"
     "pinentry-mac"
+    "kcl-lsp"
   ];
 
   homebrew.casks = [

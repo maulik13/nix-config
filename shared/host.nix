@@ -50,16 +50,15 @@
     postgresql_15
   ];
 
-  config.services = {
+  services = {
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;
-      initialScript = ''
+      initialScript = pkgs.writeText "init-postgres-script" ''
         CREATE ROLE maulik WITH LOGIN PASSWORD 'maulik';
       '';
     };
   };
-
   # Import the kubeswitch module directly
 
   # # Configure kubeswitch

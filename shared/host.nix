@@ -52,7 +52,7 @@
 
   services = {
     postgresql = {
-      enable = true;
+      enable = false;
       package = pkgs.postgresql_15;
       initialScript = pkgs.writeText "init-postgres-script" ''
         CREATE ROLE maulik WITH LOGIN PASSWORD 'maulik';

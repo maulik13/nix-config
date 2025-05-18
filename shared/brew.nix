@@ -10,6 +10,7 @@
     "borders"
     "pinentry-mac"
     "kcl-lsp"
+    "curl"
   ];
 
   homebrew.casks = [

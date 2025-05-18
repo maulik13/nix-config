@@ -30,8 +30,11 @@ in
       };
 
       initContent = ''
+        if [[ $(uname -m) == 'arm64' ]]; then
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+          export PATH="$(brew --prefix)/opt/curl/bin:$PATH"
+        fi
         export GOPATH=$HOME/go
-        export GOROOT="$(brew --prefix golang)/libexec"
         export PATH="$PATH:''${GOPATH}/bin:''${GOROOT}/bin"
 
         export PATH="''${KREW_ROOT:-''$HOME/.krew}/bin:$PATH"

@@ -116,6 +116,7 @@
               nix-homebrew = {
                 enable = true;
                 user = host.user;
+                autoMigrate = true;
                 # Optional: Declarative tap management
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;

@@ -36,7 +36,8 @@
 
     # Ops
     kubectl
-    helm
+    kubernetes-helm
+    helmfile
     k9s
     kubeswitch
     kubelogin

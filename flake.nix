@@ -41,6 +41,10 @@
       url = "github:kcl-lang/homebrew-tap";
       flake = false;
     };
+    jotta-cli = {
+      url = "github:jotta/homebrew-cli";
+      flake = false;
+    };
     textfox.url = "github:adriankarlen/textfox";
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
@@ -123,6 +127,7 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "FelixKratz/homebrew-formulae" = felixkratz-formulae;
                   "kcl-lang/homebrew-tap" = kcl-lang;
+                  "jotta/homebrew-cli" = jotta-cli;
                 };
               };
             }

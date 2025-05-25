@@ -1,10 +1,16 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  host,
+  ...
+}:
 
 {
   imports = [ ../darwin ];
   # This modifies /etc/shells file, take this later
   # environment.shells = [ pkgs.zsh ];
-  #
+
+  system.primaryUser = host.user;
 
   my.services = {
     yabai.enable = true;
@@ -14,9 +20,11 @@
 
   system.defaults = {
     dock = {
+      mru-spaces = false;
       autohide = true;
       orientation = "left";
       tilesize = 56;
+      showhidden = true;
     };
     finder = {
       AppleShowAllExtensions = true;

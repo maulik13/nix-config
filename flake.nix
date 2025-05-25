@@ -134,6 +134,7 @@
           ];
           specialArgs = {
             inherit inputs;
+            inherit host;
           };
         };
     in

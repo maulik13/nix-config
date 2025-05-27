@@ -170,9 +170,9 @@ disabled = false
 detect_env_vars = ["KUBECONFIG"]
 
 [character]
-success_symbol = '[󱞪 ](bold fg:foam)'
-error_symbol = '[󱞪 ](bold fg:love)'
-vimcmd_symbol = '[  ](bold fg:foam)'
+success_symbol = '[  󱞪](bold fg:foam)'
+error_symbol = '[  󱞪](bold fg:love)'
+vimcmd_symbol = '[ ](bold fg:foam)'
 vimcmd_replace_one_symbol = '[ ](bold fg:iris)'
 vimcmd_replace_symbol = '[ ](bold fg:iris)'
 vimcmd_visual_symbol = '[ ](bold fg:iris)'

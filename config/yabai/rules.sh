@@ -41,3 +41,4 @@ yabai -m rule --add app="^Software Update$" manage=off
 yabai -m rule --add title="About This Mac" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
+yabai -m rule --add app="^Notes$" manage=off

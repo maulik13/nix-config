@@ -46,6 +46,7 @@
     yq
     go-task
     claude-code
+    task-master-ai
     gnupg
     postgresql_15
   ];

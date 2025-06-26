@@ -123,26 +123,10 @@ truncation_symbol = "…/"
 "Developer" = "󰲋 "
 "~" = " "
 
-[custom.is_git]
-symbol = ""
-style = "fg:sapphire"
-format = '[$symbol]($style)'
-when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
-shell = ["zsh", "--no-rcs"]
-ignore_timeout = true
-
-[custom.is_not_git]
-symbol = ""
-style = "fg:sapphire bg:base"
-format = '[$symbol]($style)'
-when = "test ! $(git rev-parse --is-inside-work-tree 2> /dev/null)"
-shell = ["zsh", "--no-rcs"]
-ignore_timeout = true
-
 [git_branch]
-symbol = ""
+symbol = " "
 style = "fg:blue"
-format = '[ $symbol $branch]($style)'
+format = '[$symbol $branch]($style)'
 
 [git_status]
 style = ""
@@ -231,6 +215,23 @@ vimcmd_symbol = '[  ](bold fg:sky)'
 vimcmd_replace_one_symbol = '[ ](bold fg:lavender)'
 vimcmd_replace_symbol = '[ ](bold fg:lavender)'
 vimcmd_visual_symbol = '[ ](bold fg:lavender)'
+
+# The Git ones are mainly for formatting the prompt character colors
+[custom.is_git]
+symbol = ""
+style = "fg:sapphire"
+format = '[$symbol]($style)'
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+shell = ["zsh", "--no-rcs"]
+ignore_timeout = true
+
+[custom.is_not_git]
+symbol = ""
+style = "fg:sapphire bg:base"
+format = '[$symbol]($style)'
+when = "test ! $(git rev-parse --is-inside-work-tree 2> /dev/null)"
+shell = ["zsh", "--no-rcs"]
+ignore_timeout = true
 
 [custom.emoji]
 description = "Displays a (pseudo) random emoji for each prompt"

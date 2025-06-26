@@ -52,6 +52,8 @@ in
         add-zsh-hook precmd set_title_precmd
         add-zsh-hook precmd add_newline_btw_prompts
         add-zsh-hook preexec set_title_preexec
+
+        DEVBOX_NO_PROMPT=0
       '';
 
       shellAliases = {

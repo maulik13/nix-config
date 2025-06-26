@@ -2,7 +2,13 @@
 
 format = """
 $username\
+[](fg:overlay)\
+[ ](bg:overlay)\
+${custom.devbox}\
 $directory\
+${custom.direnv}\
+[ ](bg:overlay)\
+[](fg:overlay) \
 $git_branch\
 $git_status\
 $fill\
@@ -37,7 +43,7 @@ foam = '#9ccfd8'
 iris = '#c4a7e7'
 
 [directory]
-format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
+format = "[ $path ]($style)"
 style = "bg:overlay fg:pine bold"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -180,3 +186,15 @@ vimcmd_visual_symbol = '[ ](bold fg:iris)'
 [line_break]
 disabled = false 
 
+[custom.direnv]
+format = "[ ]($style)"
+style = "fg:iris bg:overlay"
+when = "env | grep -E '^DIRENV_FILE='"
+ignore_timeout = true
+
+[custom.devbox]
+description = "Shows an indicator when inside a Devbox shell"
+format = "[  devbox]($style)"
+style = "fg:gold bg:overlay"
+when = "env | grep -E '^DEVBOX_SHELL_ENABLED='"
+ignore_timeout = true

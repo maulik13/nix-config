@@ -46,9 +46,10 @@
     yq
     go-task
     claude-code
+    gemini-cli
+    mise
     task-master-ai
     gnupg
-    postgresql_15
   ];
 
   services = {

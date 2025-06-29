@@ -1,16 +1,18 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
+
 {
   imports = [
-    ./zsh.nix
-    ./starship.nix
+    ./dooit.nix
+    ./firefox.nix
     ./git.nix
     ./kitty.nix
-    ./tmux.nix
-    ./zed.nix
     ./neovim.nix
-    ./firefox.nix
-    ./yabai.nix
     ./sketchybar.nix
+    ./starship.nix
+    ./tmux.nix
+    ./yabai.nix
+    ./zed.nix
     ./zellij.nix
+    ./zsh.nix
   ];
 }

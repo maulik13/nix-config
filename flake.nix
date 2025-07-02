@@ -8,6 +8,7 @@
   description = "Diaballin dotfiles";
 
   inputs = {
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -46,8 +47,6 @@
       flake = false;
     };
     textfox.url = "github:adriankarlen/textfox";
-    dooit.url = "github:dooit-org/dooit";
-    dooit-extras.url = "github:dooit-org/dooit-extras";
     zjstatus = {
       url = "github:dj95/zjstatus";
     };
@@ -59,6 +58,7 @@
   outputs =
     {
       nixpkgs,
+      nixpkgs-stable,
       darwin,
       home-manager,
       flake-utils,
@@ -84,6 +84,7 @@
         {
           user,
           path,
+          pkgs-stable,
         }:
         {
           home-manager = {
@@ -93,6 +94,7 @@
             users.${user} = import path;
             extraSpecialArgs = {
               inherit inputs;
+              inherit pkgs-stable;
             };
           };
         };
@@ -101,6 +103,10 @@
         let
           system = host.arch;
           pkgs = import nixpkgs {
+            inherit system config;
+            overlays = baseOverlays;
+          };
+          pkgs-stable = import nixpkgs-stable {
             inherit system config;
             overlays = baseOverlays;
           };
@@ -113,6 +119,7 @@
             (home-manager-user {
               user = host.user;
               path = ./systems/${host.dir}/home.nix;
+              inherit pkgs-stable;
             })
             ./systems/${host.dir}/host.nix
             nix-homebrew.darwinModules.nix-homebrew
@@ -135,6 +142,7 @@
           specialArgs = {
             inherit inputs;
             inherit host;
+            inherit pkgs-stable;
           };
         };
     in

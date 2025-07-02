@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  pkgs-stable,
   ...
 }:
 {
@@ -40,17 +41,20 @@
     gnupg.agent.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    home-manager
-    jq
-    yq
-    go-task
-    claude-code
-    gemini-cli
-    mise
-    task-master-ai
-    gnupg
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      home-manager
+      go-task
+      claude-code
+      gemini-cli
+      mise
+      task-master-ai
+    ])
+    ++ (with pkgs-stable; [
+      jq
+      yq
+      gnupg
+    ]);
 
   services = {
     postgresql = {

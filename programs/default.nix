@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./dooit.nix
     ./firefox.nix
     ./git.nix
     ./kitty.nix

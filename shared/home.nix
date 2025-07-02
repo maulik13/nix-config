@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }:
@@ -17,12 +18,11 @@
     # Tooling
     ripgrep
     yazi
-    _1password-cli
     fd
-
-    # Terminal
-    starship
     vim
+
+    # Utils
+    _1password-cli
 
     # Programming
     nixfmt-rfc-style
@@ -41,10 +41,11 @@
     k9s
     kubeswitch
     kubelogin
+    kind
 
     # Cloud
-    azure-cli
-    awscli2
+    pkgs-stable.azure-cli
+    pkgs-stable.awscli2
 
     # Other stuff
     asciinema

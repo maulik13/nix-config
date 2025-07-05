@@ -58,6 +58,7 @@ in
 
       shellAliases = {
         tf = "terraform";
+        cld = "claude";
       };
       # Enable / disbale profiling
       zprof.enable = false;

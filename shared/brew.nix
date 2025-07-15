@@ -17,6 +17,7 @@
     "keycastr"
     "homerow"
     "alfred"
+    "bruno"
   ];
 
 }

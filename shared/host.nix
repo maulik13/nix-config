@@ -49,6 +49,7 @@
       gemini-cli
       mise
       task-master-ai
+      biome
     ])
     ++ (with pkgs-stable; [
       jq

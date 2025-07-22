@@ -32,6 +32,7 @@
     cargo
     upbound
     kcl
+    # kcl-language-server # Not available for macOS
     crossplane-cli
 
     # Ops

@@ -42,6 +42,10 @@
       url = "github:kcl-lang/homebrew-tap";
       flake = false;
     };
+    opencode = {
+      url = "github:sst/homebrew-tap";
+      flake = false;
+    };
     jotta-cli = {
       url = "github:jotta/homebrew-cli";
       flake = false;
@@ -135,6 +139,7 @@
                   "FelixKratz/homebrew-formulae" = felixkratz-formulae;
                   "kcl-lang/homebrew-tap" = kcl-lang;
                   "jotta/homebrew-cli" = jotta-cli;
+                  "sst/homebrew-tap" = opencode;
                 };
               };
             }

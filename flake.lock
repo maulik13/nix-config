@@ -376,6 +376,22 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753231417,
+        "narHash": "sha256-HnaRMN/4rgN3E9MME36aJpz1XDiXhGJmKXp53M0rXP0=",
+        "owner": "sst",
+        "repo": "homebrew-tap",
+        "rev": "1644ccf8a08983477028c432ffe6f9c90d5b9904",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sst",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -391,6 +407,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "opencode": "opencode",
         "textfox": "textfox",
         "zjstatus": "zjstatus"
       }

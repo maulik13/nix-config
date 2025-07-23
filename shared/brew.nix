@@ -18,6 +18,7 @@
     "pinentry-mac"
     "kcl-lsp"
     "curl"
+    "opencode"
   ];
 
   homebrew.casks = [

@@ -20,6 +20,7 @@
     yazi
     fd
     vim
+    btop
 
     # Utils
     _1password-cli

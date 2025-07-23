@@ -16,7 +16,6 @@
   homebrew.brews = [
     "borders"
     "pinentry-mac"
-    "kcl-lsp"
     "curl"
     "opencode"
   ];

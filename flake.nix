@@ -137,7 +137,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "FelixKratz/homebrew-formulae" = felixkratz-formulae;
-                  "kcl-lang/homebrew-tap" = kcl-lang;
+                  # "kcl-lang/homebrew-tap" = kcl-lang;
                   "jotta/homebrew-cli" = jotta-cli;
                   "sst/homebrew-tap" = opencode;
                 };

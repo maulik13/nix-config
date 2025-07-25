@@ -173,8 +173,6 @@
     # Node development
     p = "pnpm";
     pclock = "LC_ALL=C peaclock --config-dir ~/.config/peaclock";
-    cd = "z";
-    lgit = "lazygit --use-config-file=\"$HOME/.config/lazygit/config.yml,$HOME/.config/lazygit/themes/macchiato/peach.yml\"";
-
+    c = "z";
   };
 }

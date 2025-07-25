@@ -45,8 +45,6 @@
     (with pkgs; [
       home-manager
       go-task
-      claude-code
-      gemini-cli
       mise
       task-master-ai
       biome

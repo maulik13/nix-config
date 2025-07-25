@@ -36,6 +36,7 @@ in
         fi
         export GOPATH=$HOME/go
         export PATH="$PATH:''${GOPATH}/bin:''${GOROOT}/bin"
+        export PATH="$PATH:''$HOME/.npm-global/bin"
 
         export PATH="''${KREW_ROOT:-''$HOME/.krew}/bin:$PATH"
         source <(switcher init zsh)

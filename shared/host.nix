@@ -46,7 +46,6 @@
       home-manager
       go-task
       mise
-      task-master-ai
       biome
     ])
     ++ (with pkgs-stable; [

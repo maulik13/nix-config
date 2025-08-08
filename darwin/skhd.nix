@@ -116,6 +116,11 @@ in
         shift + lctrl + alt - m : sketchybar --reload
 
         meh - v : source ~/.config/diaball/fns.sh; switch_starship_prompt
+
+        # Media controls
+        meh - 0x1B : vol_down 5
+        meh - 0x18 : vol_up 5
+        meh - 0 : if m volume | grep -q "Muted"; then m volume --unmute; else m volume --mute; fi
       '';
     };
   };

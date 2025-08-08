@@ -45,6 +45,8 @@ add_separator sep.l1 left 8
 source $ITEM_DIR/spaces.sh
 add_separator sep.l2 left
 source $ITEM_DIR/space_add.sh
+add_separator sep.l2 left
+source $ITEM_DIR/yabai_mode.sh
 
 # Center
 source $ITEM_DIR/front_app.sh

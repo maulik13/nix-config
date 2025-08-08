@@ -18,6 +18,7 @@
     "pinentry-mac"
     "curl"
     "opencode"
+    "m-cli"
   ];
 
   homebrew.casks = [

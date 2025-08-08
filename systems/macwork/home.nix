@@ -16,6 +16,6 @@
 
   my.programs = {
     yabai.enable = true;
-    sketchybar.enable = true;
+    sketchybar.enable = false;
   };
 }

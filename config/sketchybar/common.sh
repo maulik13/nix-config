@@ -52,3 +52,13 @@ function add_group_bg() {
     background.height=36 \
     background.color=$color
 }
+
+function set_yabai_mode_bsp() {
+  sketchybar -m --set yabai_mode label="" label.color=$SKY
+}
+function set_yabai_mode_stack() {
+  sketchybar -m --set yabai_mode label="" label.color=$PEACH
+}
+function set_yabai_mode_float() {
+  sketchybar -m --set yabai_mode label="" label.color=$LAVENDER
+}

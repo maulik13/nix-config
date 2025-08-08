@@ -45,13 +45,12 @@ add_separator sep.l1 left 8
 source $ITEM_DIR/spaces.sh
 add_separator sep.l2 left
 source $ITEM_DIR/space_add.sh
-add_separator sep.l2 left
-source $ITEM_DIR/yabai_mode.sh
 
 # Center
+source $ITEM_DIR/yabai_mode.sh
 source $ITEM_DIR/front_app.sh
 source $ITEM_DIR/media.sh
-add_group_bg grp_center 'front_app media'
+add_group_bg grp_center 'yabai_mode front_app media'
 
 #Right side
 source $ITEM_DIR/timedate.sh

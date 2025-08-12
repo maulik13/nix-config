@@ -41,6 +41,16 @@ function add_group_outline() {
     background.border_color=$color
 }
 
+function set_yabai_mode_bsp() {
+  sketchybar -m --set yabai_mode label="" label.color=$SKY
+}
+function set_yabai_mode_stack() {
+  sketchybar -m --set yabai_mode label="" label.color=$PEACH
+}
+function set_yabai_mode_float() {
+  sketchybar -m --set yabai_mode label="" label.color=$LAVENDER
+}
+
 function add_group_bg() {
   local group_name=$1
   local items=$2
@@ -51,14 +61,4 @@ function add_group_bg() {
     background.corner_radius=12 \
     background.height=36 \
     background.color=$color
-}
-
-function set_yabai_mode_bsp() {
-  sketchybar -m --set yabai_mode label="" label.color=$SKY
-}
-function set_yabai_mode_stack() {
-  sketchybar -m --set yabai_mode label="" label.color=$PEACH
-}
-function set_yabai_mode_float() {
-  sketchybar -m --set yabai_mode label="" label.color=$LAVENDER
 }

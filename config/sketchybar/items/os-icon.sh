@@ -56,26 +56,25 @@ sketchybar --add item command.preferences popup.command.logo \
   icon.color=$SURFACE1 \
   label="Settings" \
   label.color=$SURFACE1 \
-  click_script="open -a 'System Preferences'; sketchybar -m --set command.logo popup.drawing=off" \
-  --add item command.activity popup.command.logo \
+  click_script="open -a 'System Preferences'; sketchybar -m --set command.logo popup.drawing=off"
+
+sketchybar --add item command.activity popup.command.logo \
   --set command.activity icon="􀫥 " \
   icon.color=$SURFACE1 \
   label="Monitor" \
   label.color=$SURFACE1 \
-  click_script="open -a 'Activity Monitor'; sketchybar -m --set command.logo popup.drawing=off" \
-  --add item command.lock popup.command.logo \
+  click_script="open -a 'Activity Monitor'; sketchybar -m --set command.logo popup.drawing=off"
+
+sketchybar --add item command.lock popup.command.logo \
   --set command.lock icon="􀆼 " \
   icon.color=$SURFACE1 \
   label="Sleep" \
   label.color=$SURFACE1 \
-  click_script="pmset displaysleepnow; sketchybar -m --set command.logo popup.drawing=off" \
-  --add item command.reload popup.command.logo \
+  click_script="pmset displaysleepnow; sketchybar -m --set command.logo popup.drawing=off"
+
+sketchybar --add item command.reload popup.command.logo \
   --set command.reload icon="􀚂 " \
   icon.color=$SURFACE1 \
   label="Reload Bar" \
   label.color=$SURFACE1 \
   click_script="sketchybar --reload; sketchybar -m --set command.logo popup.drawing=off"
-
-sketchybar --add bracket cmd command.logo \
-  --set cmd \
-  background.border_color=$SAPPHIRE

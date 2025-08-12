@@ -8,6 +8,6 @@ sketchybar --add item front_app q \
   label.y_offset=1 \
   label.color=$GREEN \
   padding_left=8 \
-  padding_right=8 \
+  padding_right=4 \
   script="$PLUGIN_DIR/front_app.sh" \
   --subscribe front_app front_app_switched

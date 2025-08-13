@@ -18,7 +18,7 @@ in
       extraConfig = ''
         # necessary to load scripting-addition during startup on macOS Big Sur
         # *yabai --load-sa* is configured to run through sudo without a password
-        sudo yabai --load-sa
+        # sudo yabai --load-sa
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
         # global settings
@@ -58,8 +58,6 @@ in
         # On display change, reapply rules
         yabai -m signal --add event=display_added action="source $HOME/.config/yabai/fns.sh; load"
         yabai -m signal --add event=display_removed action="source $HOME/.config/yabai/fns.sh; load"
-
-        borders &
       '';
     };
   };

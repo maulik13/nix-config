@@ -16,6 +16,7 @@
     yabai.enable = true;
     skhd.enable = true;
     sketchybar.enable = true;
+    jankyborders.enable = true;
   };
 
   system.defaults = {

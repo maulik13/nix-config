@@ -14,11 +14,11 @@ in
   config = lib.mkIf cfg.enable {
     services.jankyborders = {
       enable = true;
-      active_color = "0xffee99a0"; # Maroon
+      active_color = "0xFFE45E90"; # "0xffee99a0"; # Maroon
       inactive_color = "0x00000000";
       style = "round";
       width = 4.0;
-      hidpi = "on";
+      hidpi = true;
     };
   };
 }

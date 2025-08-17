@@ -24,6 +24,7 @@
 
     # Utils
     _1password-cli
+    stripe-cli
 
     # Programming
     nixfmt-rfc-style
@@ -55,6 +56,7 @@
     sl
     peaclock
     nix-output-monitor
+    cmatrix
   ];
 
   # Enables the programs and uses my configuration for them.

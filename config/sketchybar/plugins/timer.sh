@@ -14,7 +14,7 @@ __start() {
     while [ "$time_left" -gt 0 ]; do
       local minutes=$((time_left / 60))
       local seconds=$((time_left % 60))
-      sketchybar --set "$name" label="$(printf "%02d:%02d" "$minutes" "$seconds")"
+      sketchybar --set "$name" label="$(printf "%02d:%02d" "$minutes" "$seconds")" label.width=60
       sleep 1
       time_left=$((time_left - 1))
     done
@@ -45,7 +45,7 @@ start_countdown() {
 stop_countdown() {
   __stop
   afplay "$SOUNDS_PATH/DrillOut.aiff"
-  sketchybar --set "$NAME" label="No timer"
+  sketchybar --set "$NAME" label="No timer" label.width=auto
 }
 
 # If script is run directly with a duration argument (e.g. ./timer.sh 300)

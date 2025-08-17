@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source $CONFIG_DIR/colors/catppuccin.sh
-
 sketchybar --add item time right \
   --set time script="$PLUGIN_DIR/time.sh" \
   update_freq=5 \
@@ -21,4 +19,4 @@ sketchybar --add item time right \
   label.padding_right=4 \
   label.color=$BASE
 
-add_group_bg timedate 'time date' $WHITE_ALPHA1
+add_group_bg timedate 'time date' $TRANSPARENT $WHITE_ALPHA1

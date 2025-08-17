@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source "$HOME/.config/sketchybar/colors/catppuccin.sh"
 source "$HOME/.config/sketchybar/common.sh"
 
 PERCENTAGE="$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)"

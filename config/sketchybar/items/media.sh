@@ -1,12 +1,12 @@
 #!/bin/bash
 
 sketchybar --add item media e \
-  --set media label.color=$BLUE \
+  --set media label.color=$CONTEXT_MEDIA \
   label.max_chars=16 \
   icon.padding_left=0 \
   scroll_texts=on \
   icon=􀑪 \
-  icon.color=$BLUE \
+  icon.color=$CONTEXT_MEDIA \
   padding_left=8 \
   padding_right=8 \
   background.drawing=off \

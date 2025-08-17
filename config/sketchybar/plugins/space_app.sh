@@ -4,10 +4,10 @@
 # the space invoking this script (with name: $NAME) is currently selected:
 # https://felixkratz.github.io/SketchyBar/config/components#space----associate-mission-control-spaces-with-an-item
 
-source "$HOME/.config/sketchybar/colors/catppuccin.sh" # Loads all defined colors
 source "$HOME/.config/sketchybar/common.sh"
 
-CUR_SPACE_COLOR=${SPACE_COLORS[$SID - 1]}
+# CUR_SPACE_COLOR=${SPACE_COLORS[$SID - 1]}
+CUR_SPACE_COLOR=$SPACE_NORMAL
 
 selected_with_apps_props=(
   background.height=36
@@ -27,7 +27,8 @@ selected_no_apps_props=(
 )
 
 selected_props=(
-  background.color=$CUR_SPACE_COLOR
+  # background.color=$CUR_SPACE_COLOR
+  background.color=$SPACE_ACTIVE
   icon.color=$BLACK_ALPHA0
   label.color=$CRUST_ALPHA0
   icon.font.size=28

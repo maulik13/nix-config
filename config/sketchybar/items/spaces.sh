@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source "$HOME/.config/sketchybar/colors/catppuccin.sh"
 source "$HOME/.config/sketchybar/common.sh"
 
 space_props=(
@@ -36,4 +35,4 @@ done
 
 add_separator space.end left 8
 
-add_group_bg grp_spaces '/space\..*/'
+add_group_bg_light grp_spaces '/space\..*/'

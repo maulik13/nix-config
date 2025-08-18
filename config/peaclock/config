@@ -142,7 +142,7 @@ set auto-ratio on
 
 # set the style of the text set by the command 'fill' used to draw active
 # blocks in the clock
-style active-fg cyan 
+style active-fg green
 
 # set the style of the text set by the command 'fill' used to draw inactive
 # blocks in the clock
@@ -162,7 +162,7 @@ style inactive-bg clear
 style colon-bg clear
 
 # set the style of the date
-style date clear
+style date yellow
 
 # set the style of the background
 style background clear

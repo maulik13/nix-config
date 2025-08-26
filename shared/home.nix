@@ -34,6 +34,7 @@
     cargo
     upbound
     kcl
+    go
     # kcl-language-server # Not available for macOS
     crossplane-cli
 
@@ -168,7 +169,7 @@
     kctx = "switch";
     kns = "switch ns";
 
-    awsp = "export AWS_PROFILE=$(sed -n 's/^\[profile \(.*\)\]/\1/p' ~/.aws/config | fzf)";
+    awsp = "export AWS_PROFILE=$(sed -n 's/^\\[profile \\(.*\\)\\]/\\1/p' ~/.aws/config | fzf)";
 
     azswitch = "az account list | jq -r '.[] | [.id, .name] | @tsv' | fzf | cut -d$'\t' -f1 | xargs -I{} az account set --subscription {}";
 

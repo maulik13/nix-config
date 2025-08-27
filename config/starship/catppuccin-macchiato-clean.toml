@@ -6,6 +6,7 @@
 format = """
 $os\
 $directory\
+${custom.devbox}\
 ${custom.direnv}\
 $git_branch\
 $git_status\
@@ -124,7 +125,7 @@ truncation_symbol = "…/"
 "~" = " "
 
 [git_branch]
-symbol = " "
+symbol = " "
 style = "fg:blue"
 format = '[$symbol $branch]($style)'
 
@@ -242,7 +243,14 @@ format = "$output"
 ignore_timeout = true
 
 [custom.direnv]
-format = "[ ]($style)"
+format = "[  ]($style)"
 style = "fg:yellow"
 when = "env | grep -E '^DIRENV_FILE='"
+ignore_timeout = true
+
+[custom.devbox]
+description = "Shows an indicator when inside a Devbox shell"
+format = "[   devbox]($style)"
+style = "fg:yellow"
+when = "env | grep -E '^DEVBOX_SHELL_ENABLED='"
 ignore_timeout = true

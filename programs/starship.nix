@@ -18,7 +18,7 @@ in
       enableZshIntegration = true;
     };
     xdg.configFile."starship.toml" = {
-      source = ../config/starship/rose-pine-moon.toml;
+      source = ../config/starship/catppuccin-macchiato-clean.toml;
     };
   };
 }

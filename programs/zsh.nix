@@ -55,6 +55,7 @@ in
         add-zsh-hook preexec set_title_preexec
 
         DEVBOX_NO_PROMPT=0
+        export PATH="''$HOME/.local/share/../bin:$PATH"
       '';
 
       shellAliases = {

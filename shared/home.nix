@@ -27,6 +27,7 @@
     stripe-cli
 
     # Programming
+    uv
     nixfmt-rfc-style
     devbox
     nodejs_22

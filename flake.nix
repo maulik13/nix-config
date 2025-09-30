@@ -46,6 +46,10 @@
       url = "github:sst/homebrew-tap";
       flake = false;
     };
+    # yabai = {
+    #   url = "github:koekeishiya/homebrew-formulae";
+    #   flake = false;
+    # };
     jotta-cli = {
       url = "github:jotta/homebrew-cli";
       flake = false;
@@ -140,6 +144,7 @@
                   # "kcl-lang/homebrew-tap" = kcl-lang;
                   "jotta/homebrew-cli" = jotta-cli;
                   "sst/homebrew-tap" = opencode;
+                  # "koekeishiya/homebrew-formulae" = yabai;
                 };
               };
             }

@@ -16,6 +16,7 @@ in
       "yabai/fns.sh".source = ./../config/yabai/fns.sh;
       "yabai/spaces.sh".source = ./../config/yabai/spaces.sh;
       "yabai/rules.sh".source = ./../config/yabai/rules.sh;
+      # "yabai/yabairc".source = ./../config/yabai/yabairc;
     };
   };
 }

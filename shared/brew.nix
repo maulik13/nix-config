@@ -26,7 +26,6 @@
     "homerow"
     "alfred"
     "bruno"
-    "ghostty"
   ];
 
 }

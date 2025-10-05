@@ -8,6 +8,7 @@ format = """
 [](sapphire)\
 $os\
 $directory\
+${custom.devbox}\
 ${custom.is_not_git}\
 ${custom.is_git}\
 $git_branch\
@@ -232,3 +233,11 @@ vimcmd_symbol = '[  ](bold fg:sky)'
 vimcmd_replace_one_symbol = '[ ](bold fg:lavender)'
 vimcmd_replace_symbol = '[ ](bold fg:lavender)'
 vimcmd_visual_symbol = '[ ](bold fg:lavender)'
+
+
+[custom.devbox]
+description = "Shows an indicator when inside a Devbox shell"
+format = "[  ]($style)"
+style = "fg:yellow bg:sapphire"
+when = "env | grep -E '^DEVBOX_SHELL_ENABLED='"
+ignore_timeout = true

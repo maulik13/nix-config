@@ -30,6 +30,7 @@
     uv
     nixfmt-rfc-style
     devbox
+    podman
     nodejs_22
     pnpm
     cargo

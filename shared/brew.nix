@@ -26,6 +26,7 @@
     "homerow"
     "alfred"
     "bruno"
+    "podman-desktop"
   ];
 
 }

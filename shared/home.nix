@@ -46,8 +46,9 @@
     helmfile
     k9s
     kubeswitch
-    kubelogin
+    pkgs-stable.kubelogin
     kind
+    argocd
 
     # Cloud
     pkgs-stable.azure-cli
@@ -60,6 +61,7 @@
     peaclock
     nix-output-monitor
     cmatrix
+    inputs.argonaut.packages.${pkgs.system}.default
   ];
 
   # Enables the programs and uses my configuration for them.

@@ -46,6 +46,10 @@
       url = "github:sst/homebrew-tap";
       flake = false;
     };
+    argonaut = {
+      url = "github:darksworm/argonaut";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # yabai = {
     #   url = "github:koekeishiya/homebrew-formulae";
     #   flake = false;

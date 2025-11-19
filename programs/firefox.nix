@@ -3,6 +3,7 @@
   config,
   lib,
   inputs,
+  pkgs-stable,
   ...
 }:
 let
@@ -32,6 +33,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      package = pkgs-stable.firefox;
       # ---- POLICIES ----
       # Check about:policies#documentation for options.
       policies = {

@@ -16,15 +16,17 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "maulik13";
-      userEmail = "maulik.kataria@gmail.com";
       ignores = [
         "*~"
         "*.swp"
         ".DS_Store"
       ];
-      extraConfig = {
-        user.signingkey = "FFA0E1C46DF8B004";
+      settings = {
+        user = {
+          name = "maulik13";
+          email = "maulik.kataria@gmail.com";
+          signingkey = "FFA0E1C46DF8B004";
+        };
         commit.gpgsign = true;
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
@@ -33,7 +35,7 @@ in
         tag.gpgSign = true;
         gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
-      delta.enable = true;
     };
+    programs.delta.enable = true;
   };
 }

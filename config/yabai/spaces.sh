@@ -66,13 +66,20 @@ done
 
 if [[ $current_spaces -gt 6 ]]; then
   # Remove spaces until we have 6
-  while [ $(get_space_count) -gt 6 ]; do
+  max_tries=10
+  tries=0
+  while [ $(get_space_count) -gt 6 ] && [ $tries -lt $max_tries ]; do
     remove_last_space
+    tries=$((tries + 1))
     if [ $? -ne 0 ]; then
       echo "Error: Unable to remove space. Exiting loop."
       break
     fi
   done
+
+  if [ $tries -ge $max_tries ]; then
+    echo "Warning: Reached maximum tries ($max_tries) while removing spaces."
+  fi
 fi
 
 # Set space 4 to stacked layout and space 6 to float

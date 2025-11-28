@@ -15,3 +15,8 @@ tasks:
     desc: Update upstream
     cmds:
       - nix flake update
+
+  gc:
+    desc: Remove pkgs older than 14 19/11/2025
+    cmds:
+      - nix-collect-garbage --delete-older-than 14d

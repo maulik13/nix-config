@@ -43,8 +43,12 @@
     # Ops
     kubectl
     kubernetes-helm
+    kube-capacity
     helmfile
     k9s
+    ktop
+    ctop
+    kubetui
     kubeswitch
     pkgs-stable.kubelogin
     kind

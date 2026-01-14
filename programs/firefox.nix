@@ -113,7 +113,7 @@ in
     textfox = {
       enable = true;
       useLegacyExtensions = false;
-      profile = "tui-textfox";
+      profiles = [ "tui-textfox" ];
       config = {
         displayWindowControls = true;
         displayNavButtons = true;

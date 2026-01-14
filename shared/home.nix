@@ -168,22 +168,4 @@
       source = ./../config/diaball/fns.sh;
     };
   };
-
-  home.shellAliases = {
-    smerge = "/Applications/Sublime\\ Merge.app/Contents/SharedSupport/bin/smerge";
-
-    # k8s
-    kgdsec = "kubectl get secret $1 -o go-template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\n\"}}{{end}}'";
-    kctx = "switch";
-    kns = "switch ns";
-
-    awsp = "export AWS_PROFILE=$(sed -n 's/^\\[profile \\(.*\\)\\]/\\1/p' ~/.aws/config | fzf)";
-
-    azswitch = "az account list | jq -r '.[] | [.id, .name] | @tsv' | fzf | cut -d$'\t' -f1 | xargs -I{} az account set --subscription {}";
-
-    # Node development
-    p = "pnpm";
-    pclock = "LC_ALL=C peaclock --config-dir ~/.config/peaclock";
-    c = "z";
-  };
 }

@@ -170,7 +170,7 @@
   };
 
   home.shellAliases = {
-    smerge = "/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge";
+    smerge = "/Applications/Sublime\\ Merge.app/Contents/SharedSupport/bin/smerge";
 
     # k8s
     kgdsec = "kubectl get secret $1 -o go-template='{{range $k,$v := .data}}{{printf \"%s: \" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{\"\n\"}}{{end}}'";

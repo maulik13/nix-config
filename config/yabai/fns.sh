@@ -6,3 +6,7 @@ load() {
 	yabai -m rule --apply
 	sketchybar --reload
 }
+
+sketchybar_force_restart() {
+	pkill -9 sketchybar
+}

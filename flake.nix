@@ -43,7 +43,7 @@
       flake = false;
     };
     opencode = {
-      url = "github:sst/homebrew-tap";
+      url = "github:anomalyco/homebrew-tap";
       flake = false;
     };
     argonaut = {

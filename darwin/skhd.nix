@@ -106,11 +106,11 @@ in
                 "display notification \"Reloading yabai config\""; \
             source ~/.config/yabai/fns.sh; load 
 
-        # Restart Sketchybar
-        shift + lctrl + alt - b : 
+        # Force restart Sketchybar (kills process, launchd restarts it)
+        shift + lctrl + alt - b :
             /usr/bin/env osascript <<< \
-                "display notification \"Restarting Sketchybar\" with title \"Sketchybar\""; \
-            brew services restart sketchybar
+                "display notification \"Force restarting Sketchybar\" with title \"Sketchybar\""; \
+            source ~/.config/yabai/fns.sh; sketchybar_force_restart
 
         # Restart Sketchybar
         shift + lctrl + alt - m : sketchybar --reload

@@ -95,5 +95,8 @@ layout {
             plugin location="zjstatus"
         }
         children
+        pane size=2  {
+            plugin location="zjstatus_cc"
+        }
     }
 }

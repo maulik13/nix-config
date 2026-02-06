@@ -17,6 +17,6 @@ tasks:
       - nix flake update
 
   gc:
-    desc: Remove pkgs older than 14 19/11/2025
+    desc: Remove pkgs older than 7 days
     cmds:
-      - nix-collect-garbage --delete-older-than 14d
+      - nix-collect-garbage --delete-older-than 7d

@@ -43,7 +43,6 @@ let
           format_left  "#[bg=$base,fg=$text,bold]{mode}#[bg=$surface0,fg=$text] 󱓞 #[bg=$surface0,fg=$text,regular] {session}#[bg=$base,fg=$surface0]"
           format_center "#[bg=$base]{tabs}"
           format_space  ""
-          # format_right "#[bg=$base,fg=$flamingo]#[fg=$base,bg=$flamingo]  #[bg=$surface0,fg=$flamingo] {command_host} "
           format_right "#[bg=$base,fg=$flamingo]#[fg=$base,bg=$flamingo]  #[bg=$surface0] {pipe_status} │ {command_host}"
           format_hide_on_overlength "true"
           format_precedence "crl"

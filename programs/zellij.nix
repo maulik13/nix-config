@@ -43,34 +43,35 @@ let
           format_left  "#[bg=$base,fg=$text,bold]{mode}#[bg=$surface0,fg=$text] 󱓞 #[bg=$surface0,fg=$text,regular] {session}#[bg=$base,fg=$surface0]"
           format_center "#[bg=$base]{tabs}"
           format_space  ""
-          format_right "#[bg=$base,fg=$flamingo]#[fg=$base,bg=$flamingo]  #[bg=$surface0,fg=$flamingo] {command_host} "
+          # format_right "#[bg=$base,fg=$flamingo]#[fg=$base,bg=$flamingo]  #[bg=$surface0,fg=$flamingo] {command_host} "
+          format_right "#[bg=$base,fg=$flamingo]#[fg=$base,bg=$flamingo]  #[bg=$surface0] {pipe_status} │ {command_host}"
           format_hide_on_overlength "true"
           format_precedence "crl"
 
           border_enabled  "false"
           border_char     "─"
-          border_format   "#[fg=#6C7086]{char}"
+          border_format   "#[fg=$surface1]{char}"
           border_position "top"
 
           mode_normal        "#[bg=$blue,fg=$surface0,bold] WORK "
-          mode_locked        "#[bg=#5b6078,fg=$surface0,bold] LOCKED  "
-          mode_resize        "#[bg=#ee99a0,fg=$surface0,bold] RESIZE "
-          mode_pane          "#[bg=#a6da95,fg=$surface0,bold] PANE "
-          mode_tab           "#[bg=#8bd5ca,fg=$surface0,bold] TAB "
-          mode_scroll        "#[bg=#eed49f,fg=$surface0,bold] SCROLL "
-          mode_enter_search  "#[bg=#8aadf4,fg=$surface0,bold] ENT-SEARCH "
-          mode_search        "#[bg=#8aadf4,fg=$surface0,bold] SEARCHARCH "
-          mode_rename_tab    "#[bg=#8bd5ca,fg=$surface0,bold] RENAME-TAB "
-          mode_rename_pane   "#[bg=#a6da95,fg=$surface0,bold] RENAME-PANE "
-          mode_session       "#[bg=#c6a0f6,fg=$surface0,bold] SESSION "
-          mode_move          "#[bg=#f0c6c6,fg=$surface0,bold] MOVE "
-          mode_prompt        "#[bg=#7dc4e4,fg=$surface0,bold] PROMPT "
-          mode_tmux          "#[bg=#f5a97f,fg=$surface0,bold] TMUX "
+          mode_locked        "#[bg=$surface2,fg=$surface0,bold] LOCKED  "
+          mode_resize        "#[bg=$red,fg=$surface0,bold] RESIZE "
+          mode_pane          "#[bg=$green,fg=$surface0,bold] PANE "
+          mode_tab           "#[bg=$teal,fg=$surface0,bold] TAB "
+          mode_scroll        "#[bg=$yellow,fg=$surface0,bold] SCROLL "
+          mode_enter_search  "#[bg=$blue,fg=$surface0,bold] ENT-SEARCH "
+          mode_search        "#[bg=$blue,fg=$surface0,bold] SEARCHARCH "
+          mode_rename_tab    "#[bg=$teal,fg=$surface0,bold] RENAME-TAB "
+          mode_rename_pane   "#[bg=$green,fg=$surface0,bold] RENAME-PANE "
+          mode_session       "#[bg=$mauve,fg=$surface0,bold] SESSION "
+          mode_move          "#[bg=$flamingo,fg=$surface0,bold] MOVE "
+          mode_prompt        "#[bg=$sapphire,fg=$surface0,bold] PROMPT "
+          mode_tmux          "#[bg=$peach,fg=$surface0,bold] TMUX "
 
           // formatting for inactive tabs
-          tab_normal              "#[bg=$base,fg=#8aadf4]#[bg=#8aadf4,fg=$surface0,bold]{index} #[bg=$surface0,fg=#b8c0e0] {name}{floating_indicator}#[bg=$base,fg=$surface0]"
-          tab_normal_fullscreen   "#[bg=$base,fg=#8aadf4]#[bg=#8aadf4,fg=$surface0,bold]{index} #[bg=$surface0,fg=#b8c0e0] {name}{fullscreen_indicator}#[bg=$base,fg=$surface0]"
-          tab_normal_sync         "#[bg=$base,fg=#8aadf4]#[bg=#8aadf4,fg=$surface0,bold]{index} #[bg=$surface0,fg=#b8c0e0] {name}{sync_indicator}#[bg=$base,fg=$surface0]"
+          tab_normal              "#[bg=$base,fg=$blue]#[bg=$blue,fg=$surface0,bold]{index} #[bg=$surface0,fg=$subtext1] {name}{floating_indicator}#[bg=$base,fg=$surface0]"
+          tab_normal_fullscreen   "#[bg=$base,fg=$blue]#[bg=$blue,fg=$surface0,bold]{index} #[bg=$surface0,fg=$subtext1] {name}{fullscreen_indicator}#[bg=$base,fg=$surface0]"
+          tab_normal_sync         "#[bg=$base,fg=$blue]#[bg=$blue,fg=$surface0,bold]{index} #[bg=$surface0,fg=$subtext1] {name}{sync_indicator}#[bg=$base,fg=$surface0]"
 
           // formatting for the current active tab
           tab_active              "#[bg=$base,fg=$peach]#[bg=$peach,fg=$base,bold]{index} #[bg=$peach,fg=$surface0,bold]{name}{floating_indicator}#[bg=$base,fg=$peach]"
@@ -90,19 +91,23 @@ let
           command_git_branch_interval    "10"
           command_git_branch_rendermode  "static"
 
-          datetime        "#[fg=#6C7086,bold] {format} "
+          datetime        "#[fg=$surface0,bold] {format} "
           datetime_format "%A, %d %b %Y %H:%M"
           datetime_timezone "Europe/London"
 
           command_host_command    "uname -n"
-          command_host_format     "{stdout}"
+          command_host_format     "#[fg=$flamingo] {stdout}"
           command_host_interval   "0"
           command_host_rendermode "static"
 
           command_user_command    "whoami"
-          command_user_format     "{stdout}"
+          command_user_format     "#[fg=$flamingo] {stdout}"
           command_user_interval   "0"
           command_user_rendermode "static"
+
+          // Claude activity + context status
+          pipe_status_format "#[fg=$sky]󰮯 {output}"
+          pipe_status_rendermode "dynamic"
         }
       }
   '';

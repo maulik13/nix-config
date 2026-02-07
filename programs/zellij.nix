@@ -91,7 +91,7 @@ let
           format_left  "{mode}#[bg=$mantle,fg=$text, regular] 󱓞  {session}#[fg=$mantle]"
           format_center "{tabs}"
           format_space  ""
-          format_right "#[fg=$flamingo]█{command_host} "
+          format_right "#[fg=$mantle]{command_host}"
           format_hide_on_overlength "true"
           format_precedence "crl"
 
@@ -121,9 +121,9 @@ let
           tab_normal_sync         "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$mantle,fg=$subtext1] {name}{sync_indicator}#[fg=$mantle]"
 
           // formatting for the current active tab
-          tab_active              "#[fg=$peach]#[bg=$peach,fg=$surface1,bold]{index} #[bg=$peach,fg=$surface0,bold]{name}{floating_indicator}#[fg=$peach]"
-          tab_active_fullscreen   "#[fg=$peach]#[bg=$peach,fg=$surface1,bold]{index} #[bg=$peach,fg=$surface0,bold]{name}{fullscreen_indicator}#[fg=$peach]"
-          tab_active_sync         "#[fg=$peach]#[bg=$peach,fg=$surface1,bold]{index} #[bg=$peach,fg=$surface0,bold]{name}{sync_indicator}#[fg=$peach]"
+          tab_active              "#[fg=$peach]#[bg=$peach,fg=$surface2,bold]{index} #[bg=$peach,fg=$mantle,bold]{name}{floating_indicator}#[fg=$peach]"
+          tab_active_fullscreen   "#[fg=$peach]#[bg=$peach,fg=$surface2,bold]{index} #[bg=$peach,fg=$mantle,bold]{name}{fullscreen_indicator}#[fg=$peach]"
+          tab_active_sync         "#[fg=$peach]#[bg=$peach,fg=$surface2,bold]{index} #[bg=$peach,fg=$mantle,bold]{name}{sync_indicator}#[fg=$peach]"
 
           // separator between the tabs
           tab_separator           " "
@@ -143,12 +143,12 @@ let
           datetime_timezone "Europe/London"
 
           command_host_command    "uname -n"
-          command_host_format     "#[bg=$mantle,fg=$flamingo]   {stdout}"
+          command_host_format     "#[bg=$mantle,fg=$flamingo]   {stdout} "
           command_host_interval   "0"
           command_host_rendermode "static"
 
           command_user_command    "whoami"
-          command_user_format     "#[bg=$mantle,fg=$flamingo]   {stdout}"
+          command_user_format     "#[bg=$mantle,fg=$flamingo]   {stdout} "
           command_user_interval   "0"
           command_user_rendermode "static"
 

@@ -116,9 +116,9 @@ let
           mode_tmux          "#[bg=$peach,fg=$mantle,bold] TMUX "
 
           // formatting for inactive tabs
-          tab_normal              "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$mantle,fg=$subtext1] {name}{floating_indicator}#[fg=$mantle]"
-          tab_normal_fullscreen   "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$mantle,fg=$subtext1] {name}{fullscreen_indicator}#[fg=$mantle]"
-          tab_normal_sync         "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$mantle,fg=$subtext1] {name}{sync_indicator}#[fg=$mantle]"
+          tab_normal              "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$blue,fg=$base] {name}{floating_indicator}#[fg=$blue]"
+          tab_normal_fullscreen   "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$blue,fg=$base] {name}{fullscreen_indicator}#[fg=$blue]"
+          tab_normal_sync         "#[fg=$blue]#[bg=$blue,fg=$surface2,bold]{index} #[bg=$blue,fg=$base] {name}{sync_indicator}#[fg=$blue]"
 
           // formatting for the current active tab
           tab_active              "#[fg=$peach]#[bg=$peach,fg=$surface2,bold]{index} #[bg=$peach,fg=$mantle,bold]{name}{floating_indicator}#[fg=$peach]"

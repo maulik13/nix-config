@@ -112,7 +112,6 @@ in
     };
     textfox = {
       enable = true;
-      useLegacyExtensions = false;
       profiles = [ "tui-textfox" ];
       config = {
         displayWindowControls = true;

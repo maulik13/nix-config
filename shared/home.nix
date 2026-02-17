@@ -23,6 +23,7 @@
     btop
 
     # Utils
+    cloudflared
     _1password-cli
     stripe-cli
 
@@ -137,6 +138,7 @@
 
     yazi = {
       enable = true;
+      shellWrapperName = "y";
     };
   };
 

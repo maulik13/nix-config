@@ -10,12 +10,15 @@ remove_all_rules
 
 # Set up rules for associating apps with spaces
 yabai -m rule --add app="^kitty$" space=code1
+
 yabai -m rule --add app="^Code$" space=code2
+yabai -m rule --add app="^Claude" space=code2
 yabai -m rule --add app="^pgAdmin 4$" space=code2
 yabai -m rule --add app="^Postman$" space=code2
 
 yabai -m rule --add app="^Google Chrome$" title="Maulik$" space=browse1
 yabai -m rule --add app="^Notion$" space=browse1
+yabai -m rule --add app="draw.io" space=browse1
 yabai -m rule --add app="^Google Chrome$" title!="Maulik$" space=browse2
 yabai -m rule --add app="^Firefox$" space=browse2
 

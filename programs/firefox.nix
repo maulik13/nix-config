@@ -117,10 +117,6 @@ in
         displayWindowControls = true;
         displayNavButtons = true;
         displayUrlbarIcons = true;
-        tabs = {
-        };
-        sidebery = {
-        };
       };
     };
   };

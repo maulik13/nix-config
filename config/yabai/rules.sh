@@ -31,11 +31,11 @@ yabai -m rule --add app="^Music$" space=misc
 yabai -m rule --add app="^Messages$" space=misc manage=off
 yabai -m rule --add app="^WhatsApp$" space=misc manage=off
 yabai -m rule --add app="^Telegram$" space=misc manage=off
+yabai -m rule --add app="^FortiClient$" manage=off space=misc
 
 # Layout management exceptions
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
-yabai -m rule --add app="^FortiClient$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Dictionary$" manage=off
 yabai -m rule --add app="^App Store$" manage=off

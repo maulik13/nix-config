@@ -14,10 +14,9 @@
   };
 
   homebrew.brews = [
-    "borders"
     "pinentry-mac"
     "curl"
-    "opencode"
+    # https://github.com/rgcr/m-cli
     "m-cli"
   ];
 

@@ -16,6 +16,7 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
+      signing.format = "openpgp";
       ignores = [
         "*~"
         "*.swp"

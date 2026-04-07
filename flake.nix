@@ -34,14 +34,6 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    felixkratz-formulae = {
-      url = "github:FelixKratz/homebrew-formulae";
-      flake = false;
-    };
-    kcl-lang = {
-      url = "github:kcl-lang/homebrew-tap";
-      flake = false;
-    };
     opencode = {
       url = "github:anomalyco/homebrew-tap";
       flake = false;
@@ -50,10 +42,6 @@
       url = "github:darksworm/argonaut";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # yabai = {
-    #   url = "github:koekeishiya/homebrew-formulae";
-    #   flake = false;
-    # };
     jotta-cli = {
       url = "github:jotta/homebrew-cli";
       flake = false;
@@ -84,7 +72,7 @@
       hosts = import ./config/hosts.nix;
       baseOverlays = [
         (final: prev: {
-          zjstatus = zjstatus.packages.${prev.system}.default;
+          zjstatus = zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
         })
         nur.overlays.default
       ];
@@ -125,7 +113,6 @@
         in
         darwin.lib.darwinSystem {
           inherit pkgs;
-          inherit system;
           modules = [
             home-manager.darwinModules.home-manager
             (home-manager-user {
@@ -144,11 +131,8 @@
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
-                  "FelixKratz/homebrew-formulae" = felixkratz-formulae;
-                  # "kcl-lang/homebrew-tap" = kcl-lang;
                   "jotta/homebrew-cli" = jotta-cli;
-                  "sst/homebrew-tap" = opencode;
-                  # "koekeishiya/homebrew-formulae" = yabai;
+                  "anomalyco/homebrew-tap" = opencode;
                 };
               };
             }

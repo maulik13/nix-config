@@ -27,9 +27,12 @@
     _1password-cli
     stripe-cli
 
+    # AI stuff
+    opencode
+
     # Programming
     uv
-    nixfmt-rfc-style
+    nixfmt
     devbox
     podman
     nodejs_22
@@ -66,7 +69,7 @@
     peaclock
     nix-output-monitor
     cmatrix
-    inputs.argonaut.packages.${pkgs.system}.default
+    inputs.argonaut.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Enables the programs and uses my configuration for them.

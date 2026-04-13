@@ -55,14 +55,43 @@ display_count=$(get_display_count)
 # We set labels and display here before removing extras
 #   otherwise if space distribution is not correct then we will get errors
 # Set labels for all 6 spaces
-display_id=1
-for i in {1..6}; do
-  if [[ $i -gt 3 && $display_count -gt 1 ]]; then
-    display_id=2
-  fi
-  echo "Assigning ${SPACE_LABELS[$i]} to ${i}"
-  yabai -m space $i --label "${SPACE_LABELS[$i]}" --display $display_id
+assign_labels() {
+  display_id=1
+  for i in {1..6}; do
+    if [[ $i -gt 3 && $display_count -gt 1 ]]; then
+      display_id=2
+    fi
+    echo "Assigning label=${SPACE_LABELS[$i]} and display=${display_id} to space=${i}"
+    yabai -m space $i --label "${SPACE_LABELS[$i]}" --display $display_id
+  done
+}
+
+verify_labels() {
+  local all_ok=true
+  for i in {1..6}; do
+    actual_label=$(yabai -m query --spaces --space $i | jq -r '.label')
+    if [[ -z "$actual_label" || "$actual_label" == "null" || "$actual_label" != "${SPACE_LABELS[$i]}" ]]; then
+      echo "Warning: space $i has label='$actual_label', expected='${SPACE_LABELS[$i]}'"
+      all_ok=false
+    fi
+  done
+  $all_ok
+}
+
+assign_labels
+
+max_retries=3
+retry=0
+while ! verify_labels && [[ $retry -lt $max_retries ]]; do
+  retry=$((retry + 1))
+  echo "Retrying label assignment (attempt $retry/$max_retries)..."
+  sleep 1
+  assign_labels
 done
+
+if ! verify_labels; then
+  echo "Error: Failed to assign all labels after $max_retries retries."
+fi
 
 if [[ $current_spaces -gt 6 ]]; then
   # Remove spaces until we have 6

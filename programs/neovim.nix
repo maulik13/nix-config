@@ -15,6 +15,12 @@ in
   config = lib.mkIf cfg.enable {
     programs.neovim = {
       enable = true;
+      withRuby = true;
+      withPython3 = true;
+      initLua = ''
+        vim.hl = vim.highlight
+        require("config.lazy")
+      '';
     };
   };
 }

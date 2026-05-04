@@ -51,6 +51,7 @@
       url = "github:dj95/zjstatus";
     };
     nur.url = "github:nix-community/nur";
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   # In this context, outputs are mostly about getting home-manager what it
@@ -66,6 +67,7 @@
       nix-homebrew,
       zjstatus,
       nur,
+      llm-agents,
       ...
     }@inputs:
     let
@@ -75,6 +77,7 @@
           zjstatus = zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
         })
         nur.overlays.default
+        llm-agents.overlays.default
       ];
       config = {
         allowUnfree = true;

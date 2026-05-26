@@ -25,6 +25,7 @@ $kotlin\
 $haskell\
 $python\
 $kubernetes\
+$aws\
 $time\
 $line_break\
 ${custom.emoji}  \
@@ -254,3 +255,8 @@ format = "[   devbox]($style)"
 style = "fg:yellow"
 when = "env | grep -E '^DEVBOX_SHELL_ENABLED='"
 ignore_timeout = true
+
+[aws]
+symbol = " "
+style = "fg:yellow"
+format = '[ $symbol$profile (\($region\)) ]($style)'

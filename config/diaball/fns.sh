@@ -81,26 +81,18 @@ function zellij_tab_name_update() {
 }
 
 function switch_starship_prompt() {
-  local config_dir="$HOME/.config"
-  local starship_dir="$config_dir/starship"
-  local current_config="$config_dir/starship.toml"
-  local filled_config="$starship_dir/starship-filled.toml"
-  local plain_config="$starship_dir/starship-plain.toml"
-
-  # Create symlink if it doesn't exist
-  if [ ! -L "$current_config" ]; then
-    ln -sf "$filled_config" "$current_config"
-    echo "Created symlink to filled Starship prompt"
-  fi
-
-  local target=$(readlink "$current_config")
-  if [ "$target" = "$filled_config" ]; then
-    ln -sf "$plain_config" "$current_config"
-    echo "Switched to plain Starship prompt"
+  local state="$HOME/.cache/starship-variant"
+  mkdir -p "$(dirname "$state")"
+  local current next
+  current=$(cat "$state" 2>/dev/null || echo filled)
+  if [ "$current" = "filled" ]; then
+    next=plain
   else
-    ln -sf "$filled_config" "$current_config"
-    echo "Switched to filled Starship prompt"
+    next=filled
   fi
+  echo "$next" > "$state"
+  export STARSHIP_CONFIG="$HOME/.config/starship/${next}.toml"
+  echo "Switched to $next Starship prompt"
 }
 
 function vol_up() {

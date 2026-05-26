@@ -50,9 +50,17 @@ in
           }
         }
 
+        function _starship_variant_sync() {
+          local variant
+          variant=$(cat "$HOME/.cache/starship-variant" 2>/dev/null || echo filled)
+          export STARSHIP_CONFIG="$HOME/.config/starship/''${variant}.toml"
+        }
+        _starship_variant_sync
+
         # autoload -Uz add-zsh-hook
         add-zsh-hook precmd set_title_precmd
         add-zsh-hook precmd add_newline_btw_prompts
+        add-zsh-hook precmd _starship_variant_sync
         add-zsh-hook preexec set_title_preexec
 
         DEVBOX_NO_PROMPT=0

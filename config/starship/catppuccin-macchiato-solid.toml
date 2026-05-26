@@ -31,7 +31,9 @@ $haskell\
 $python\
 [](fg:teal bg:mauve)\
 $kubernetes\
-[](fg:mauve bg:base2)\
+[](fg:mauve bg:yellow)\
+$aws\
+[](fg:yellow bg:base2)\
 $time\
 [ ](fg:base2)\
 $line_break$character"""
@@ -241,3 +243,8 @@ format = "[  ]($style)"
 style = "fg:yellow bg:sapphire"
 when = "env | grep -E '^DEVBOX_SHELL_ENABLED='"
 ignore_timeout = true
+
+[aws]
+symbol = " "
+style = "fg:base bg:yellow"
+format = '[ $symbol$profile (\($region\)) ]($style)'

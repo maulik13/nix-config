@@ -17,8 +17,7 @@ in
       enable = true;
       enableZshIntegration = true;
     };
-    xdg.configFile."starship.toml" = {
-      source = ../config/starship/catppuccin-macchiato-clean.toml;
-    };
+    xdg.configFile."starship/filled.toml".source = ../config/starship/catppuccin-macchiato-solid.toml;
+    xdg.configFile."starship/plain.toml".source = ../config/starship/catppuccin-macchiato-clean.toml;
   };
 }

@@ -52,6 +52,10 @@
     };
     nur.url = "github:nix-community/nur";
     llm-agents.url = "github:numtide/llm-agents.nix";
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # In this context, outputs are mostly about getting home-manager what it

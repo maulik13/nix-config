@@ -10,6 +10,7 @@
     ../programs
     inputs.catppuccin.homeModules.catppuccin
     inputs.textfox.homeManagerModules.default
+    inputs.hunk.homeManagerModules.default
   ];
 
   home.username = "maulik";
@@ -145,6 +146,11 @@
     yazi = {
       enable = true;
       shellWrapperName = "y";
+    };
+
+    hunk = {
+      enable = true;
+      enableGitIntegration = true;
     };
   };
 

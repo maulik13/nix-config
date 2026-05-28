@@ -42,17 +42,17 @@
     nodejs_22
     pnpm
     cargo
-    upbound
     kcl
     go
-    # kcl-language-server # Not available for macOS
-    crossplane-cli
+    crystal
 
     # Ops
     kubectl
     kubernetes-helm
     kube-capacity
     helmfile
+    crossplane-cli
+    upbound
     k9s
     ktop
     ctop

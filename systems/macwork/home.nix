@@ -7,7 +7,7 @@
   # The homeDirectory is configured by each host's configuration because it's
   # not constant between linux and macos
   home.homeDirectory = "/Users/maulik";
-  home.stateVersion = "24.05";
+  home.stateVersion = "25.11";
 
   # Interestingly this is actually broken in macOS! I went on a deep-dive
   # and eventually found that the Zed team has run into this issue as well.

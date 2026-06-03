@@ -53,6 +53,7 @@
     helmfile
     crossplane-cli
     upbound
+    fluxcd
     k9s
     ktop
     ctop

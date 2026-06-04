@@ -49,6 +49,7 @@
     # Ops
     kubectl
     kubernetes-helm
+    kustomize
     kube-capacity
     helmfile
     crossplane-cli
@@ -157,6 +158,8 @@
 
   # Catppuccin magic
   catppuccin = {
+    enable = true;
+    autoEnable = false;
     bat.enable = true;
     flavor = "macchiato";
     lazygit = {
@@ -182,5 +185,9 @@
     configFile."diaball/fns.sh" = {
       source = ./../config/diaball/fns.sh;
     };
+
+    # k9s rewrites its own config.yaml on every session, so backup-on-collision
+    # breaks the second rebuild. Let HM forcibly own it instead.
+    configFile."k9s/config.yaml".force = true;
   };
 }

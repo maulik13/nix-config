@@ -83,6 +83,8 @@ in
         awsp = "export AWS_PROFILE=$(sed -n 's/^\\[profile \\(.*\\)\\]/\\1/p' ~/.aws/config | fzf)";
         azswitch = "az account list | jq -r '.[] | [.id, .name] | @tsv' | fzf | cut -d$'\t' -f1 | xargs -I{} az account set --subscription {}";
 
+        claudestacc = "CLAUDE_CONFIG_DIR=$HOME/.claude-stacc claude";
+        claudemk = "CLAUDE_CONFIG_DIR=$HOME/.claude-mk claude";
       };
       # Enable / disbale profiling
       zprof.enable = false;

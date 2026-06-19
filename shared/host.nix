@@ -50,7 +50,7 @@
     ])
     ++ (with pkgs-stable; [
       jq
-      yq
+      yq-go
       gnupg
     ]);
 

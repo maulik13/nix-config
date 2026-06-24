@@ -26,7 +26,8 @@ in
         user = {
           name = "maulik13";
           email = "maulik.kataria@gmail.com";
-          signingkey = "FFA0E1C46DF8B004";
+          # Resolve the signing key by UID/email instead of a hardcoded hex id,
+          signingkey = "maulik.kataria@gmail.com";
         };
         commit.gpgsign = true;
         init.defaultBranch = "main";
@@ -36,6 +37,13 @@ in
         tag.gpgSign = true;
         gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       };
+
+      includes = [
+        {
+          condition = "gitdir:~/work/";
+          path = "~/.gitconfig-work";
+        }
+      ];
     };
     programs.delta.enable = true;
   };

@@ -152,6 +152,11 @@
         };
     in
     {
-      darwinConfigurations."${hosts.work.hostname}" = mkDarwinConfig hosts.work;
+      darwinConfigurations = builtins.listToAttrs (
+        map (host: {
+          name = host.hostname;
+          value = mkDarwinConfig host;
+        }) (builtins.attrValues hosts)
+      );
     };
 }

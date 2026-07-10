@@ -6,6 +6,11 @@ tasks:
     cmds:
       - nix run nix-darwin -- switch --flake .
 
+  update-osx-personal:
+    desc: Update the MKMBPM1P personal Mac system
+    cmds:
+      - nix run nix-darwin -- switch --flake .#MKMBPM1P
+
   update-osx-impure:
     desc: Update OSX system
     cmds:

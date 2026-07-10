@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  host,
   ...
 }:
 {
@@ -16,7 +17,7 @@
     shell = pkgs.zsh;
   };
 
-  networking.hostName = "mk-mac-work";
+  networking.hostName = host.hostname;
 
   system.stateVersion = 5;
 }

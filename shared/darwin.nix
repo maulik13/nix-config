@@ -60,8 +60,11 @@
   system.defaults.NSGlobalDomain = {
     # Automatic dark mode at night
     AppleInterfaceStyleSwitchesAutomatically = true;
+    _HIHideMenuBar = true;
     AppleShowAllExtensions = true;
     ApplePressAndHoldEnabled = false;
+    # Shortest delay before a held key starts repeating.
+    InitialKeyRepeat = 15;
 
     # Enables using the function keys as the F<number> key instead of OS controls
     "com.apple.keyboard.fnState" = false;

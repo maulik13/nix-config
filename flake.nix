@@ -68,7 +68,6 @@
       home-manager,
       flake-utils,
       catppuccin,
-      nix-homebrew,
       zjstatus,
       nur,
       llm-agents,
@@ -128,21 +127,6 @@
               inherit pkgs-stable;
             })
             ./systems/${host.dir}/host.nix
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                enable = true;
-                user = host.user;
-                autoMigrate = true;
-                # Optional: Declarative tap management
-                taps = with inputs; {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "jotta/homebrew-cli" = jotta-cli;
-                  "anomalyco/homebrew-tap" = opencode;
-                };
-              };
-            }
           ];
           specialArgs = {
             inherit inputs;

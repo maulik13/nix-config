@@ -41,6 +41,12 @@
     gnupg.agent.enable = true;
   };
 
+  # Make fonts available to macOS applications as well as terminal programs.
+  fonts.packages = with pkgs; [
+    iosevka-bin
+    nerd-fonts.victor-mono
+  ];
+
   environment.systemPackages =
     (with pkgs; [
       home-manager

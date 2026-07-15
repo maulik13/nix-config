@@ -43,6 +43,8 @@
   ];
 
   homebrew.casks = [
+    "font-sketchybar-app-font"
+    "font-sf-mono"
     "keycastr"
     "homerow"
     "alfred"

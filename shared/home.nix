@@ -63,6 +63,7 @@
     pkgs-stable.kubelogin
     kind
     argocd
+    upcloud-cli
 
     # Cloud
     pkgs-stable.azure-cli

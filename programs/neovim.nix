@@ -19,6 +19,7 @@ in
       withPython3 = true;
       initLua = ''
         vim.hl = vim.highlight
+        vim.env.PATH = "${lib.makeBinPath [ pkgs.fzf ]}:" .. vim.env.PATH
         require("config.lazy")
       '';
     };

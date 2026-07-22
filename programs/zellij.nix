@@ -11,54 +11,6 @@ let
   inherit (pkgs) stdenv theme zjstatus;
   pluginConfig = ''
     plugins {
-      zjstatus_cc location="file:///nix/store/2idg7848djd6099nfh5f0gkd0hlgzy26-zjstatus-0.22.0/bin/zjstatus.wasm" {
-
-          color_rosewater "#f4dbd6"
-          color_flamingo "#f0c6c6"
-          color_pink "#f5bde6"
-          color_mauve "#c6a0f6"
-          color_red "#ed8796"
-          color_maroon "#ee99a0"
-          color_peach "#f5a97f"
-          color_yellow "#eed49f"
-          color_green "#a6da95"
-          color_teal "#8bd5ca"
-          color_sky "#91d7e3"
-          color_sapphire "#7dc4e4"
-          color_blue "#8aadf4"
-          color_lavender "#b7bdf8"
-          color_text "#cad3f5"
-          color_subtext1 "#b8c0e0"
-          color_subtext0 "#a5adcb"
-          color_overlay2 "#939ab7"
-          color_overlay1 "#8087a2"
-          color_overlay0 "#6e738d"
-          color_surface2 "#5b6078"
-          color_surface1 "#494d64"
-          color_surface0 "#363a4f"
-          color_base "#24273a"
-          color_mantle "#1e2030"
-          color_crust "#181926"
-
-          format_left  "#[bg=$mauve,fg=$base] 󱜙  Claude #[fg=$mauve]"
-          format_center "{pipe_status}{command_claude_status}"
-          // Claude activity + context status
-          pipe_status_format " {output}"
-          pipe_status_rendermode "dynamic"
-
-          border_enabled  "true"
-          border_char     "─"
-          border_format   "#[fg=$surface1]{char}"
-          border_position "top"
-
-          // Claude activity status — reads state pushed by hooks
-          // Symlink is auto-created by the hook script at first run
-          command_claude_status_command     "bash /tmp/claude-zellij-status/sync.sh"
-          command_claude_status_format      " "
-          command_claude_status_interval    "2"
-          command_claude_status_rendermode  "static"
-      }
-
       zjstatus location="file://${pkgs.zjstatus}/bin/zjstatus.wasm" {
           // Catppuccin Machiatto
           color_rosewater "#f4dbd6"

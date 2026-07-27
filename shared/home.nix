@@ -55,6 +55,7 @@
     crossplane-cli
     upbound
     fluxcd
+    flux9s
     k9s
     ktop
     ctop

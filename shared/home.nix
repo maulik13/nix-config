@@ -25,7 +25,7 @@
 
     # Utils
     cloudflared
-    _1password-cli
+    # _1password-cli # To use beta we need to manually install
     stripe-cli
 
     # AI stuff (from llm-agents.nix)

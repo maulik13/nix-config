@@ -17,5 +17,6 @@
   my.programs = {
     yabai.enable = true;
     sketchybar.enable = true;
+    kitty.fontSize = 16;
   };
 }

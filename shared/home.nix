@@ -121,9 +121,9 @@
         "--cycle"
       ];
       defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
-      fileWidgetCommand = "fd --type f --follow --exclude .git";
-      changeDirWidgetCommand = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
-      historyWidgetOptions = [
+      fileWidget.command = "fd --type f --follow --exclude .git";
+      changeDirWidget.command = "fd --type=d --hidden --strip-cwd-prefix --exclude .git";
+      historyWidget.options = [
         "--sort"
         "--exact"
       ];

@@ -80,7 +80,7 @@
           zjstatus = zjstatus.packages.${prev.stdenv.hostPlatform.system}.default;
         })
         nur.overlays.default
-        llm-agents.overlays.default
+        llm-agents.overlays.shared-nixpkgs
       ];
       config = {
         allowUnfree = true;

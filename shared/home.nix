@@ -31,7 +31,6 @@
     # AI stuff (from llm-agents.nix)
     pkgs.llm-agents.opencode
     pkgs.llm-agents.ccusage
-    pkgs.llm-agents.codex
     pkgs.llm-agents.pi
 
     # Programming

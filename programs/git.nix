@@ -40,7 +40,7 @@ in
 
       includes = [
         {
-          condition = "gitdir:~/work/";
+          condition = "gitdir:~/work/**";
           path = "~/.gitconfig-work";
         }
       ];

@@ -112,6 +112,11 @@
       enable = true;
     };
 
+    mise = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     fzf = {
       enable = true;
       defaultOptions = [

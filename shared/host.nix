@@ -52,7 +52,6 @@
     (with pkgs; [
       home-manager
       go-task
-      mise
       biome
     ])
     ++ (with pkgs-stable; [

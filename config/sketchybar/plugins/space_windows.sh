@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Sourced rather than executed per app: icon_map.sh appends a trailing space to
+# every icon when run directly, which would space out the packed icon strip.
+# Sourcing also avoids spawning a bash process for each app on every update.
+source "$CONFIG_DIR/plugins/icon_map.sh"
+
 function handle_windows_change() {
   space="$(echo "$INFO" | jq -r '.space')"
   apps="$(echo "$INFO" | jq -r '.apps | keys[]')"
@@ -7,7 +12,8 @@ function handle_windows_change() {
   icon_strip=""
   if [ "${apps}" != "" ]; then
     while read -r app; do
-      icon_strip+="$($CONFIG_DIR/plugins/icon_map.sh "$app")"
+      __icon_map "$app"
+      icon_strip+="$icon_result"
     done <<<"${apps}"
   fi
 

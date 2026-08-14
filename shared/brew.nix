@@ -43,7 +43,8 @@
   ];
 
   homebrew.casks = [
-    "font-sketchybar-app-font"
+    # font-sketchybar-app-font is installed from nixpkgs via fonts.packages so
+    # that the font and its icon map come from a single pinned derivation.
     "font-sf-mono"
     "keycastr"
     "homerow"

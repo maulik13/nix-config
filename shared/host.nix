@@ -45,6 +45,7 @@
   fonts.packages = with pkgs; [
     iosevka-bin
     nerd-fonts.victor-mono
+    sketchybar-app-font
   ];
 
   environment.systemPackages =

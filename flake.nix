@@ -56,6 +56,11 @@
       url = "github:modem-dev/hunk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Pinned to a release tag, so it keeps upstream's own nixpkgs pin rather
+    # than following ours: that's the revision their release is tested against.
+    herdr = {
+      url = "github:herdrdev/herdr/v0.8.0";
+    };
   };
 
   # In this context, outputs are mostly about getting home-manager what it

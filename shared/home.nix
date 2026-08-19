@@ -32,6 +32,7 @@
     pkgs.llm-agents.opencode
     pkgs.llm-agents.ccusage
     pkgs.llm-agents.pi
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programming
     uv

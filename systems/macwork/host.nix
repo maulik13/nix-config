@@ -5,6 +5,9 @@
   ...
 }:
 {
+
+  my.windowManager.backend = "aerospace";
+
   imports = [
     ../../shared/host.nix
     ../../shared/darwin.nix

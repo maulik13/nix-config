@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   host,
   ...
@@ -12,9 +13,12 @@
 
   system.primaryUser = host.user;
 
+  # Window manager switch: "yabai" (yabai + skhd) or "aerospace".
+  # This is the only line to change; see darwin/window-manager.nix. mkDefault so
+  # a host can override it in systems/<host>/host.nix.
+  my.windowManager.backend = lib.mkDefault "yabai";
+
   my.services = {
-    yabai.enable = true;
-    skhd.enable = true;
     sketchybar.enable = true;
     jankyborders.enable = true;
   };

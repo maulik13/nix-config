@@ -19,7 +19,11 @@ in
         # necessary to load scripting-addition during startup on macOS Big Sur
         # *yabai --load-sa* is configured to run through sudo without a password
         # sudo yabai --load-sa
-        yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+        # Interpolate the full store path here. The NOPASSWD sudoers rule nix-darwin
+        # writes matches the yabai package path exactly, so a bare "yabai" (resolved
+        # via PATH to /run/current-system/sw/bin) asks for a password instead, and
+        # the scripting addition never gets reloaded after Dock restarts.
+        yabai -m signal --add event=dock_did_restart action="sudo ${config.services.yabai.package}/bin/yabai --load-sa"
 
         # global settings
         yabai -m config external_bar all:45:0

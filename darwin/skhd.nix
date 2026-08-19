@@ -100,17 +100,14 @@ in
 
         meh - g : yabai -m rule --apply
 
-        # Reload yabai rules and spaces
-        shift + lctrl + alt - r : 
-            /usr/bin/env osascript <<< \
-                "display notification \"Reloading yabai config\""; \
-            source ~/.config/yabai/fns.sh; load 
+        # Reload yabai rules and spaces.
+        # Keep these on one line: skhd only continues a command onto the next
+        # line when the current one ends in a backslash. Both functions notify
+        # on start and finish; details land in ~/.local/state/yabai/load.log
+        shift + lctrl + alt - r : source ~/.config/yabai/fns.sh; load
 
         # Force restart Sketchybar (kills process, launchd restarts it)
-        shift + lctrl + alt - b :
-            /usr/bin/env osascript <<< \
-                "display notification \"Force restarting Sketchybar\" with title \"Sketchybar\""; \
-            source ~/.config/yabai/fns.sh; sketchybar_force_restart
+        shift + lctrl + alt - b : source ~/.config/yabai/fns.sh; sketchybar_force_restart
 
         # Restart Sketchybar
         shift + lctrl + alt - m : sketchybar --reload

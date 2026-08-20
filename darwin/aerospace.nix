@@ -94,12 +94,21 @@ in
         persistent-workspaces = workspaces;
         workspace-to-monitor-force-assignment = monitorAssignment;
 
-        # yabai: window_gap 16, padding 12 on every side, plus external_bar
-        # all:45:0 reserving room for SketchyBar. 45 + 12 = 57 at the top.
+        # yabai: window_gap 16 and padding 12 on every side. The top also has to
+        # clear SketchyBar, which occupies 0-48px (height 44 + y_offset 4), so
+        # 48 + 12 = 60.
+        #
+        # Unlike yabai, AeroSpace measures gaps from the screen's *visible*
+        # frame, which already excludes a notch's safe area. The built-in
+        # display reserves 32px that way, so a flat 60 would push its windows to
+        # 92px and leave a visible gap under the bar. Subtract it there.
         gaps = {
           inner.horizontal = 16;
           inner.vertical = 16;
-          outer.top = 57;
+          outer.top = [
+            { monitor."Built-in.*Display" = 28; }
+            60
+          ];
           outer.bottom = 12;
           outer.left = 12;
           outer.right = 12;

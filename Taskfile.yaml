@@ -9,6 +9,8 @@ tasks:
 
   prune-agents:
     desc: Unload launchd agents that the current generation no longer declares
+    # Without this, task echoes the whole shell block on every run.
+    silent: true
     cmds:
       # nix-darwin writes and updates user agents but does not always unload one
       # that disappeared from the generation. With KeepAlive set that leaves the

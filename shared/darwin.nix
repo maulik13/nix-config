@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   inputs,
   host,
   ...
@@ -12,9 +13,12 @@
 
   system.primaryUser = host.user;
 
+  # Window manager switch: "yabai" (yabai + skhd) or "aerospace".
+  # This is the only line to change; see darwin/window-manager.nix. mkDefault so
+  # a host can override it in systems/<host>/host.nix.
+  my.windowManager.backend = lib.mkDefault "yabai";
+
   my.services = {
-    yabai.enable = true;
-    skhd.enable = true;
     sketchybar.enable = true;
     jankyborders.enable = true;
   };
@@ -36,6 +40,23 @@
 
       # Use the column view by default-- the obviously correct and best view
       FXPreferredViewStyle = "clmv";
+    };
+
+    # Hand the three-finger horizontal swipe to BetterTouchTool, which drives
+    # AeroSpace workspaces through `wm-workspace`. The four-finger swipe keeps
+    # its macOS meaning, so Mission Control / full-screen apps still work.
+    # 0 = off, 1 = swipe between pages, 2 = swipe between full-screen apps.
+    trackpad.TrackpadThreeFingerHorizSwipeGesture = 0;
+
+    # These have no nix-darwin options of their own.
+    CustomUserPreferences = {
+      # Magic Trackpad reports through its own domain.
+      "com.apple.driver.AppleBluetoothMultitouch.trackpad".TrackpadThreeFingerHorizSwipeGesture = 0;
+
+      # Same trade on the Magic Mouse: its two-finger horizontal swipe goes to
+      # AeroSpace rather than to macOS Spaces.
+      "com.apple.AppleMultitouchMouse".MouseTwoFingerHorizSwipeGesture = 0;
+      "com.apple.driver.AppleBluetoothMultitouch.mouse".MouseTwoFingerHorizSwipeGesture = 0;
     };
   };
   security = {

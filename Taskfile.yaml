@@ -5,6 +5,32 @@ tasks:
     desc: Update OSX system
     cmds:
       - nix run nix-darwin -- switch --flake .
+      - task: prune-agents
+
+  prune-agents:
+    desc: Unload launchd agents that the current generation no longer declares
+    # Without this, task echoes the whole shell block on every run.
+    silent: true
+    cmds:
+      # nix-darwin writes and updates user agents but does not always unload one
+      # that disappeared from the generation. With KeepAlive set that leaves the
+      # old process running - switching my.windowManager.backend would otherwise
+      # leave yabai and skhd alive alongside AeroSpace, fighting over windows.
+      - |
+        gen=/run/current-system/user/Library/LaunchAgents
+        if [ ! -d "$gen" ]; then
+          echo "prune-agents: $gen missing, refusing to prune" >&2
+          exit 0
+        fi
+        for f in "$HOME"/Library/LaunchAgents/org.nixos.*.plist; do
+          [ -e "$f" ] || continue
+          label=$(basename "$f" .plist)
+          if [ ! -e "$gen/$label.plist" ]; then
+            echo "prune-agents: unloading stale $label"
+            launchctl bootout "gui/$(id -u)/$label" 2>/dev/null || true
+            rm -f "$f"
+          fi
+        done
 
   update-osx-personal:
     desc: Update the MKMBPM1P personal Mac system

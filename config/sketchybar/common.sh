@@ -2,6 +2,8 @@
 
 source "$HOME/.config/sketchybar/colors/catppuccin.sh"
 source "$HOME/.config/sketchybar/utils.sh"
+# Written by programs/sketchybar.nix: WM_BACKEND and WM_WORKSPACES.
+source "$HOME/.config/sketchybar/wm.sh"
 
 ICONS_VOLUME=(􀊣 􀊥 􀊧 􀊩)
 ICON_CPU=􀫥
@@ -68,12 +70,12 @@ POPUP_COMMON_PROPS=(
   popup.background.shadow.angle=270
 )
 
-function set_yabai_mode_bsp() {
-  sketchybar -m --set yabai_mode label="" label.color=$CONTEXT_WM_BSP
+function set_wm_mode_tiled() {
+  sketchybar -m --set wm_mode label="" label.color=$CONTEXT_WM_BSP
 }
-function set_yabai_mode_stack() {
-  sketchybar -m --set yabai_mode label="" label.color=$CONTEXT_WM_STACK
+function set_wm_mode_stacked() {
+  sketchybar -m --set wm_mode label="" label.color=$CONTEXT_WM_STACK
 }
-function set_yabai_mode_float() {
-  sketchybar -m --set yabai_mode label="" label.color=$CONTEXT_WM_FLOAT
+function set_wm_mode_floating() {
+  sketchybar -m --set wm_mode label="" label.color=$CONTEXT_WM_FLOAT
 }

@@ -2,16 +2,16 @@
 source "$HOME/.config/sketchybar/common.sh"
 
 space_number=$(yabai -m query --spaces --space | jq -r .index)
-yabai_mode=$(yabai -m query --spaces --space | jq -r .type)
+wm_mode=$(yabai -m query --spaces --space | jq -r .type)
 
-case "$yabai_mode" in
+case "$wm_mode" in
 bsp)
-  set_yabai_mode_bsp
+  set_wm_mode_tiled
   ;;
 stack)
-  set_yabai_mode_stack
+  set_wm_mode_stacked
   ;;
 float)
-  set_yabai_mode_float
+  set_wm_mode_floating
   ;;
 esac

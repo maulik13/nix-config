@@ -51,6 +51,9 @@
     "alfred"
     "bruno"
     "podman-desktop"
+    # Gesture mapping for trackpad and Magic Mouse. Used to drive AeroSpace
+    # workspace switching, which macOS cannot bind to a gesture itself.
+    "bettertouchtool"
   ];
 
 }

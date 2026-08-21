@@ -271,6 +271,19 @@ in
             "exec-and-forget osascript -e 'display notification \"Config reloaded\" with title \"AeroSpace\"'"
           ];
 
+          # Window picker. Shows Alfred pre-filled with the keyword of the
+          # AeroSpace Window Picker workflow, which lists every open window
+          # across all workspaces and both monitors; picking one runs
+          # `aerospace focus --window-id`. `search` is Alfred's AppleScript
+          # command for "show yourself with this text already typed".
+          #
+          # Absolute path for the same reason as exec-on-workspace-change
+          # above. exec-* actually runs with PATH=/opt/homebrew/{bin,sbin}:
+          # /usr/{bin,sbin}:/bin:/sbin - not empty, but with no nix profile on
+          # it (confirm with `aerospace list-exec-env-vars`).
+          "ctrl-alt-shift-w" =
+            "exec-and-forget /usr/bin/osascript -e 'tell application \"Alfred 5\" to search \"w \"'";
+
           # Bar controls
           "ctrl-alt-shift-b" = "exec-and-forget /usr/bin/pkill -9 sketchybar";
           "ctrl-alt-shift-m" = "exec-and-forget sketchybar --reload";

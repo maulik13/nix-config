@@ -2,7 +2,8 @@
 # Search for icons here: https://www.nerdfonts.com/cheat-sheet
 #                          ﱦ 齃     ﮂ 爵        ﭵ     ﱦ  ﰊ 異 ﴱ אַ
 
-source "$HOME/.config/sketchybar/colors/catppuccin.sh"
+# Sources the palette named by the mutable state file; see theme.sh.
+source "$HOME/.config/sketchybar/theme.sh"
 source "$HOME/.config/sketchybar/common.sh"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"

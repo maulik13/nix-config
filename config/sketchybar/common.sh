@@ -1,6 +1,7 @@
 #!/bin/bash
 
-source "$HOME/.config/sketchybar/colors/catppuccin.sh"
+# Sources the palette named by the mutable state file; see theme.sh.
+source "$HOME/.config/sketchybar/theme.sh"
 source "$HOME/.config/sketchybar/utils.sh"
 # Written by programs/sketchybar.nix: WM_BACKEND and WM_WORKSPACES.
 source "$HOME/.config/sketchybar/wm.sh"

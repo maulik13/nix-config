@@ -57,7 +57,7 @@
     fluxcd
     flux9s
     k9s
-    ktop
+    kubectl-ktop
     ctop
     kubetui
     kubeswitch

@@ -114,7 +114,7 @@ let
     theme "catppuccin-macchiato"
   '';
   staticConfig = builtins.readFile ./../config/zellij/static.kdl;
-  platformSpecificConfig = strings.optionalString stdenv.isDarwin ''copy_command "pbcopy"'';
+  platformSpecificConfig = strings.optionalString stdenv.hostPlatform.isDarwin ''copy_command "pbcopy"'';
   configText = lib.concatLines [
     themeConfig
     platformSpecificConfig

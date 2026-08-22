@@ -66,6 +66,51 @@ let
         esac
       '';
 
+  # Same idea as wmWorkspace, one level down: cycle the focused window inside
+  # whichever space is on the monitor under the pointer. Bound to the Magic
+  # Mouse two-finger TipTaps in BetterTouchTool.
+  wmWindowBody =
+    if isAerospace then
+      ''
+        # Focus the space under the pointer first, exactly as wm-workspace does,
+        # so a gesture cycles the screen being pointed at. --wrap-around on the
+        # stdin clause keeps it quiet when that space is already focused; without
+        # it a single-entry list reports "reached the end" on stderr.
+        case "$1" in
+        next)
+          exec ${aerospaceBin} eval 'list-workspaces --monitor mouse --visible | workspace --stdin --wrap-around next; focus --wrap-around dfs-next'
+          ;;
+        prev)
+          exec ${aerospaceBin} eval 'list-workspaces --monitor mouse --visible | workspace --stdin --wrap-around next; focus --wrap-around dfs-prev'
+          ;;
+        esac
+      ''
+    else
+      ''
+        # yabai has no --wrap-around here either, so wrap by hand at both ends.
+        case "$1" in
+        next)
+          ${yabaiBin} -m window --focus next 2>/dev/null || ${yabaiBin} -m window --focus first
+          ;;
+        prev)
+          ${yabaiBin} -m window --focus prev 2>/dev/null || ${yabaiBin} -m window --focus last
+          ;;
+        esac
+      '';
+
+  wmWindow = pkgs.writeShellApplication {
+    name = "wm-window";
+    text = ''
+      # Generated for my.windowManager.backend = "${cfg.backend}".
+      if [ "$#" -ne 1 ] || { [ "$1" != next ] && [ "$1" != prev ]; }; then
+        echo "usage: wm-window next|prev" >&2
+        exit 2
+      fi
+
+      ${wmWindowBody}
+    '';
+  };
+
   wmWorkspace = pkgs.writeShellApplication {
     name = "wm-workspace";
     text = ''
@@ -102,8 +147,9 @@ in
         Flip this in shared/darwin.nix (or override per host in
         systems/<host>/host.nix), then run `task update-osx`.
 
-        Whichever backend is selected, `wm-workspace next|prev|<workspace>` is
-        installed as a stable entry point for gesture tools.
+        Whichever backend is selected, `wm-workspace next|prev|<workspace>`
+        and `wm-window next|prev` are installed as stable entry points for
+        gesture tools.
       '';
     };
   };
@@ -117,6 +163,9 @@ in
       aerospace.enable = lib.mkDefault isAerospace;
     };
 
-    environment.systemPackages = [ wmWorkspace ];
+    environment.systemPackages = [
+      wmWorkspace
+      wmWindow
+    ];
   };
 }

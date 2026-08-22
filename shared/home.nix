@@ -5,6 +5,30 @@
   lib,
   ...
 }:
+let
+  # argonaut's flake does not build under Nix as shipped: two of its tests fail
+  # in the sandbox, on both v2.19.0 and the default branch. Upstream CI runs
+  # only CodeQL - no Go test job - so nothing catches it there.
+  #
+  #   TestRollbackDiff_ComparesSelectedAgainstCurrentRevision shells out to
+  #     git, which the sandbox does not provide. Adding it is the real fix.
+  #
+  #   TestEventsCommand_Off_ClosesPaneAndStopsAutoOpen passes outside the
+  #     sandbox under every variation tried, so it is sensitive to the sandbox
+  #     rather than broken. Skipped, as upstream already skips two others.
+  #
+  # Appending to upstream's -skip rather than replacing it keeps their entries
+  # if the pin moves; if they ever drop the flag the build fails loudly, which
+  # is the right time to revisit. Both halves can go once upstream fixes this.
+  argonaut =
+    (inputs.argonaut.packages.${pkgs.stdenv.hostPlatform.system}.default).overrideAttrs
+      (old: {
+        nativeCheckInputs = (old.nativeCheckInputs or [ ]) ++ [ pkgs.git ];
+        checkFlags = map (
+          f: if lib.hasPrefix "-skip=" f then "${f}|TestEventsCommand_Off_ClosesPaneAndStopsAutoOpen" else f
+        ) (old.checkFlags or [ ]);
+      });
+in
 {
   imports = [
     ../programs
@@ -77,7 +101,7 @@
     peaclock
     nix-output-monitor
     cmatrix
-    inputs.argonaut.packages.${pkgs.stdenv.hostPlatform.system}.default
+    argonaut
   ];
 
   # Enables the programs and uses my configuration for them.

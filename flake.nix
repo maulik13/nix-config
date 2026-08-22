@@ -39,7 +39,10 @@
       flake = false;
     };
     argonaut = {
-      url = "github:darksworm/argonaut";
+      # Pinned to a release tag rather than the default branch, so an upstream
+      # push cannot change what we build. Bump deliberately, and re-check the
+      # overrideAttrs in shared/home.nix when you do.
+      url = "github:darksworm/argonaut/v2.19.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jotta-cli = {

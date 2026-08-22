@@ -8,15 +8,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1787084302,
-        "narHash": "sha256-4xhQS2xSu6mDih/R73gr1haYpPzwWr/y6ui+qalmOMs=",
+        "lastModified": 1786292662,
+        "narHash": "sha256-8rl6pWOHCeVjAkFjk8RW7Ept81Bi0T/hGfQznY7dV2I=",
         "owner": "darksworm",
         "repo": "argonaut",
-        "rev": "61bc1c282db678c4401991e8c473a1667fd984a5",
+        "rev": "dd1894c73c10a4bb6284d874d75ac3efb24689a8",
         "type": "github"
       },
       "original": {
         "owner": "darksworm",
+        "ref": "v2.19.0",
         "repo": "argonaut",
         "type": "github"
       }

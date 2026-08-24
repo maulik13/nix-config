@@ -61,6 +61,19 @@ let
     "if".app-name-regex-substring = pattern;
     run = "move-node-to-workspace ${ws}";
   };
+
+  # Cycle workspaces in the order above rather than AeroSpace's own.
+  #
+  # `workspace next|prev` walks workspaces alphabetically - browse1 browse2
+  # code1 code2 comm misc - which disagrees with the ctrl+cmd+<n> numbering, so
+  # ctrl+cmd+3 lands on browse1 while "next" from code2 skips to comm. Feeding
+  # the list on stdin makes the arrows and the number keys agree.
+  #
+  # Absolute path for the same reason as exec-on-workspace-change: exec-* runs
+  # with no nix profile on PATH.
+  cycleWorkspace =
+    direction:
+    "exec-and-forget /bin/bash -c \"printf '%s\\n' ${lib.concatStringsSep " " workspaces} | ${config.services.aerospace.package}/bin/aerospace workspace --stdin --wrap-around ${direction}\"";
 in
 {
   options.my.services.aerospace = {
@@ -228,6 +241,12 @@ in
           # Focus workspace: ctrl+cmd+1..6 come from workspaceBindings above.
           # ctrl+cmd+7..0 are dropped - there were only ever six Spaces.
           "ctrl-cmd-x" = "workspace-back-and-forth";
+
+          # Cycle workspaces. macOS owns ctrl+left/right for its own
+          # Spaces, so this sits one modifier over, on the same ctrl+cmd
+          # that already means "workspace" here.
+          "ctrl-cmd-left" = cycleWorkspace "prev";
+          "ctrl-cmd-right" = cycleWorkspace "next";
 
           # Focus monitor
           "ctrl-alt-z" = "focus-monitor prev";

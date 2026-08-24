@@ -46,13 +46,29 @@
     # AeroSpace workspaces through `wm-workspace`. The four-finger swipe keeps
     # its macOS meaning, so Mission Control / full-screen apps still work.
     # 0 = off, 1 = swipe between pages, 2 = swipe between full-screen apps.
+    #
+    # This one option covers both trackpads: nix-darwin writes every
+    # `system.defaults.trackpad.*` key to com.apple.AppleMultitouchTrackpad
+    # (built-in) *and* com.apple.driver.AppleBluetoothMultitouch.trackpad
+    # (Magic Trackpad), so listing the Bluetooth domain again by hand is
+    # redundant.
+    #
+    # Caveat worth remembering: `defaults write` does not reach the multitouch
+    # driver. The driver reads these keys when it initialises - at login, or
+    # when a Bluetooth trackpad reconnects - so after `task update-osx` the
+    # written plist and the driver's live state can disagree until the next
+    # login. Verify what the driver actually has, not what the plist says:
+    #
+    #   ioreg -c AppleMultitouchDevice -r -d 1 | grep -o \
+    #     '"TrackpadThreeFingerHorizSwipeGesture"=[0-9]'
+    #
+    # If that disagrees with this value, toggling System Settings > Trackpad >
+    # More Gestures > "Swipe between pages" pushes it through without a logout.
+    # A stale 2 here means macOS swallows the swipe and BTT never sees it.
     trackpad.TrackpadThreeFingerHorizSwipeGesture = 0;
 
     # These have no nix-darwin options of their own.
     CustomUserPreferences = {
-      # Magic Trackpad reports through its own domain.
-      "com.apple.driver.AppleBluetoothMultitouch.trackpad".TrackpadThreeFingerHorizSwipeGesture = 0;
-
       # Same trade on the Magic Mouse: its two-finger horizontal swipe goes to
       # AeroSpace rather than to macOS Spaces.
       "com.apple.AppleMultitouchMouse".MouseTwoFingerHorizSwipeGesture = 0;

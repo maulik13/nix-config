@@ -36,7 +36,7 @@ sketchybar --add item command.logo left \
   background.color=$(ch_transp "$ACCENT_COLOR" "55") \
   icon.font.size=36 \
   icon="󰄛" \
-  icon.color=$YELLOW \
+  icon.color=$NAV_PRIMARY \
   icon.padding_left=5 \
   padding_left=0 \
   icon.padding_right=5 \

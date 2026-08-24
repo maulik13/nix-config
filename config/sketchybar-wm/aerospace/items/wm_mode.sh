@@ -3,7 +3,7 @@
 sketchybar --add item wm_mode q \
   --set wm_mode update_freq=3 \
   label.font="VictorMono Nerd Font:Regular:18.0" \
-  label.color=$PEACH \
+  label.color=$CONTEXT_WM \
   label.drawing=on \
   icon.drawing=off \
   wm_mode script="$CONFIG_DIR/plugins/wm_mode.sh" \

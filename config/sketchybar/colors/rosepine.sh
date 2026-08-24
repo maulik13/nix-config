@@ -75,8 +75,11 @@ export SHADOW_COLOR=$(ch_transp $BLACK "88")
 # LEFT SECTION - Navigation & Spaces
 export SPACE_NORMAL=$WHITE
 export SPACE_ACTIVE=$PINE
-export SPACE_BG_COLOR=$(ch_transp "$MAUVE" "44")
-export SPACE_BORDER_COLOR=$(ch_transp "$MAUVE" "66")
+export NAV_PRIMARY=$IRIS       # Purple accent for navigation
+export NAV_ACCENT=$FOAM        # Teal for space highlights
+export NAV_MUTED=$WHITE_ALPHA2 # Secondary navigation elements
+export SPACE_BG_COLOR=$(ch_transp "$NAV_PRIMARY" "44")
+export SPACE_BORDER_COLOR=$(ch_transp "$NAV_PRIMARY" "66")
 
 # CENTER SECTION - Active Context
 export CONTEXT_APP=$PINE      # Blue for active application indicator
@@ -107,3 +110,16 @@ export STATUS_WARNING=$GOLD  # Gold for warning states, attention needed
 export STATUS_ERROR=$LOVE    # Pink for error states, critical issues
 export STATUS_INFO=$FOAM     # Teal for information states, neutral info
 export STATUS_NEUTRAL=$MUTED # Muted for neutral states, inactive elements
+
+# GAUGE - continuous level readouts (battery charge, volume loudness). A shared
+# scale so anything showing "how much" reads the same way across the bar.
+export GAUGE_FULL=$FOAM      # Teal for full / healthy
+export GAUGE_HIGH=$PINE      # Blue for comfortably high
+export GAUGE_MID=$IRIS       # Purple for the middle of the range
+export GAUGE_LOW=$GOLD       # Gold for low enough to notice
+export GAUGE_CRITICAL=$LOVE  # Pink for critical, or loudest
+
+# Additional semantic slots the items needed
+export CONTEXT_WM=$GOLD      # Window-manager mode indicator (mode-agnostic)
+export INFO_SELECTED=$ROSE   # Selected entry in a popup list
+export PROD_TERTIARY=$ROSE   # Third productivity accent (timer)

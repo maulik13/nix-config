@@ -8,7 +8,7 @@ volume_slider=(
   label.drawing=off
   icon.drawing=off
   padding_left=0
-  slider.highlight_color=$BLUE
+  slider.highlight_color=$INFO_ACCENT
   slider.background.height=5
   slider.background.corner_radius=3
   slider.background.color=$WHITE_ALPHA2
@@ -20,7 +20,7 @@ volume_icon=(
   click_script="$PLUGIN_DIR/volume_click.sh"
   icon=$VOLUME_100
   label.drawing=off
-  icon.color=$GREY
+  icon.color=$INFO_SECONDARY
   popup.background.color=$BASE
   popup.background.corner_radius=5
   padding_left=10
@@ -41,7 +41,7 @@ cpu=(
   padding_left=0
   padding_right=0
   icon=$ICON_CPU
-  icon.color=$YELLOW
+  icon.color=$INFO_PRIMARY
 )
 
 sketchybar --add item battery right \

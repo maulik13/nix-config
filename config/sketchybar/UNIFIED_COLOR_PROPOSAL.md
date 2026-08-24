@@ -49,30 +49,53 @@ Changes to the config tree need `task update-osx` before they reach
 ## Adding a theme
 
 Copy an existing `colors/*.sh`, keep **every** variable name it defines, and
-remap the values. `theme-switch.sh` picks it up automatically — it validates
+remap the values. `theme-switch.sh` picks it up automatically - it validates
 against `colors/<name>.sh`.
 
-## Known gaps
+Only the semantic names are contracts. Each palette's raw colors are private to
+it: catppuccin has `MAUVE`/`BLUE`/`PEACH`, rose-pine has `IRIS`/`FOAM`/`GOLD`,
+and neither set appears outside `colors/`. Items and plugins reference semantic
+names only, so a new theme cannot silently leave one undefined.
 
-These are real and currently affect the bar.
+To check a palette is complete, source it and confirm every name the items use
+resolves:
 
-- **`NAV_PRIMARY` and `NAV_ACCENT` are undefined in both palettes** but used by
-  `SPACE_COLORS` in `common.sh:19`. The array is unquoted, so the two empty
-  expansions vanish and it collapses to 7 elements instead of 9 — every space
-  past the first takes the wrong color. Affects catppuccin today, not just
-  rosepine. Fix by defining both in each palette.
+```bash
+grep -rhoE '\$\{?[A-Z][A-Z0-9_]+\}?' items plugins \
+      ../sketchybar-wm/*/items ../sketchybar-wm/*/plugins \
+  | tr -d '${}' | sort -u > /tmp/refs
+grep -hoE '^export [A-Z0-9_]+=' colors/*.sh | sed 's/^export //; s/=$//' | sort -u > /tmp/names
+comm -12 /tmp/refs /tmp/names   # every one of these must be set in both palettes
+```
 
-- **`rosepine.sh` is an incomplete port.** Items and plugins make 25 references
-  to 11 Catppuccin-only names (`$YELLOW`, `$PEACH`, `$TEAL`, `$SAPPHIRE`,
-  `$RED`, `$MAUVE`, `$GREEN`, `$PINK`, `$MAROON`, `$GREY`, `$BLUE`) that
-  rosepine does not define — it has LOVE/GOLD/ROSE/PINE/FOAM/IRIS instead. All
-  25 expand empty under rosepine. This went unnoticed because switching never
-  worked, so rosepine was never loaded.
+## Semantic vocabulary
 
-- **`rosepine.sh:78-79`** (`SPACE_BG_COLOR`, `SPACE_BORDER_COLOR`) call
-  `ch_transp "$MAUVE"`, which throws an arithmetic error on load. Nothing
-  consumes either variable, so this is log noise rather than a rendering bug.
+Beyond the section groups (`NAV_*`, `CONTEXT_*`, `INFO_*`, `PROD_*`) and
+`STATUS_*`, there is a **`GAUGE_*`** scale for continuous level readouts:
+`GAUGE_FULL`, `GAUGE_HIGH`, `GAUGE_MID`, `GAUGE_LOW`, `GAUGE_CRITICAL`. Battery
+charge and volume loudness both use it, so anything showing "how much" reads
+the same way across the bar.
 
-- **Semantic migration is barely started.** Only 3 semantic names appear across
-  all items and plugins; the rest still reference raw palette colors, which is
-  what makes the gap above bite.
+## History
+
+Every gap this document used to list is now closed:
+
+- `NAV_PRIMARY` / `NAV_ACCENT` were referenced by `SPACE_COLORS` but defined in
+  neither palette. The array is unquoted, so the empty expansions vanished and
+  it silently held 7 entries instead of 9 - every space past the first took the
+  wrong color, under catppuccin as much as rose-pine. Both are now defined.
+
+- `rosepine.sh` was an incomplete port: items made 25 references to 11
+  Catppuccin-only names it did not define. All 25 now use semantic names.
+
+- `rosepine.sh` computed `SPACE_BG_COLOR` / `SPACE_BORDER_COLOR` from `$MAUVE`,
+  a Catppuccin name, which threw an arithmetic error on every load. They use
+  `$NAV_PRIMARY` now.
+
+- The semantic migration is complete for items and plugins; nothing outside
+  `colors/` names a raw palette color.
+
+Three colors deliberately changed when the migration landed, all under
+catppuccin: volume 60-79% peach to yellow and volume 1-59% mauve to sapphire,
+both from adopting the shared `GAUGE_*` scale; and the os-icon logo yellow to
+mauve, which is what this document always specified for `NAV_PRIMARY`.

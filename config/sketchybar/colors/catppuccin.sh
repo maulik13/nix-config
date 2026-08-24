@@ -73,6 +73,9 @@ export SHADOW_COLOR=$(ch_transp $BLACK "88")
 # LEFT SECTION - Navigation & Spaces
 export SPACE_NORMAL=$WHITE
 export SPACE_ACTIVE=$MAROON
+export NAV_PRIMARY=$MAUVE      # Main navigation elements (OS icon, space backgrounds)
+export NAV_ACCENT=$BLUE        # Space highlights and selection states
+export NAV_MUTED=$WHITE_ALPHA2 # Secondary navigation elements (space add button)
 
 # CENTER SECTION - Active Context
 export CONTEXT_APP=$GREEN         # Active application indicator
@@ -103,3 +106,16 @@ export STATUS_WARNING=$YELLOW # Warning states, attention needed
 export STATUS_ERROR=$RED      # Error states, critical issues
 export STATUS_INFO=$BLUE      # Information states, neutral info
 export STATUS_NEUTRAL=$GREY   # Neutral states, inactive elements
+
+# GAUGE - continuous level readouts (battery charge, volume loudness). A shared
+# scale so anything showing "how much" reads the same way across the bar.
+export GAUGE_FULL=$GREEN     # Full / healthy
+export GAUGE_HIGH=$TEAL      # Comfortably high
+export GAUGE_MID=$SAPPHIRE   # Middle of the range
+export GAUGE_LOW=$YELLOW     # Low enough to notice
+export GAUGE_CRITICAL=$RED   # Critical, or loudest
+
+# Additional semantic slots the items needed
+export CONTEXT_WM=$PEACH     # Window-manager mode indicator (mode-agnostic)
+export INFO_SELECTED=$PINK   # Selected entry in a popup list
+export PROD_TERTIARY=$PEACH  # Third productivity accent (timer)

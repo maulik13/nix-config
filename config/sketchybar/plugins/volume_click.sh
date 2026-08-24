@@ -29,7 +29,7 @@ toggle_devices() {
   while IFS= read -r device; do
     COLOR=$SUBTEXT0
     if [ "${device}" = "$CURRENT" ]; then
-      COLOR=$PINK
+      COLOR=$INFO_SELECTED
     fi
     args+=(--add item volume.device.$COUNTER popup."$NAME"
       --set volume.device.$COUNTER label="${device}"

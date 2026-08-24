@@ -3,7 +3,7 @@
 sketchybar --add item timer right \
   --set timer label="No timer" \
   icon=􀐱 \
-  icon.color=$PEACH \
+  icon.color=$PROD_TERTIARY \
   icon.padding_right=6 \
   background.drawing=off \
   script="$PLUGIN_DIR/timer.sh" \

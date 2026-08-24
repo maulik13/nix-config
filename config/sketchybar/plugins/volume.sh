@@ -12,22 +12,22 @@ function update_status() {
   case "$VOLUME" in
   [8-9][0-9] | 100)
     ICON=${ICONS_VOLUME[3]}
-    COLOR=$RED
+    COLOR=$GAUGE_CRITICAL
     ICON_WIDTH=36
     ;;
   [6-7][0-9])
     ICON=${ICONS_VOLUME[3]}
-    COLOR=$PEACH
+    COLOR=$GAUGE_LOW
     ICON_WIDTH=36
     ;;
   [3-5][0-9])
     ICON=${ICONS_VOLUME[2]}
-    COLOR=$MAUVE
+    COLOR=$GAUGE_MID
     ICON_WIDTH=32
     ;;
   [1-9] | [1-2][0-9])
     ICON=${ICONS_VOLUME[1]}
-    COLOR=$MAUVE
+    COLOR=$GAUGE_MID
     ICON_WIDTH=28
     ;;
   *)

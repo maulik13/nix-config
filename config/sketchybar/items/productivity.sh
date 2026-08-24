@@ -5,7 +5,7 @@ source "$HOME/.config/sketchybar/common.sh"
 taskwarrior=(
   update_freq=120
   icon=$ICON_TASK
-  icon.color=$MAROON
+  icon.color=$PROD_PRIMARY
   label.color=$TEXT
 )
 
@@ -13,7 +13,7 @@ noti_slack=(
   update_freq=30
   icon.y_offset=0
   icon=$ICON_SLACK
-  icon.color=$TEAL
+  icon.color=$PROD_SECONDARY
   label.color=$TEXT
 )
 

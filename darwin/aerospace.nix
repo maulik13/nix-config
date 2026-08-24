@@ -175,7 +175,27 @@ in
           (tileOn "comm" "^Microsoft Outlook$")
           (tileOn "comm" "^Microsoft Teams$")
 
-          (floatOn "misc" "^1Password$")
+          # 1Password's SSH-approval prompt is a separate window of the same
+          # app, so the blanket move sent it to misc - and a prompt you cannot
+          # see is a prompt you cannot approve. That is what makes `git push`
+          # fail with "agent refused operation" while the key is perfectly fine.
+          #
+          # Pin only the main window; anything else 1Password opens floats where
+          # it appears. Matching the main window rather than the prompt fails in
+          # the safe direction: if this title stops matching some day, the main
+          # window merely floats in place, instead of the prompt going missing
+          # again.
+          {
+            "if" = {
+              app-name-regex-substring = "^1Password$";
+              window-title-regex-substring = "— 1Password$";
+            };
+            run = [
+              "layout floating"
+              "move-node-to-workspace misc"
+            ];
+          }
+          (floatOnly "^1Password$")
           (tileOn "misc" "^Music$")
           (floatOn "misc" "^Messages$")
           (floatOn "misc" "^WhatsApp$")

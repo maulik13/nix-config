@@ -11,7 +11,7 @@ let
   # or relabel them and macOS cannot delete them when a display is unplugged.
   workspaces = [
     "code1"
-    "code2"
+    "ai"
     "browse1"
     "browse2"
     "comm"
@@ -22,7 +22,7 @@ let
   # one display is connected AeroSpace falls back to it, so undocking is a no-op.
   onDisplay1 = [
     "code1"
-    "code2"
+    "ai"
     "browse1"
   ];
 
@@ -59,7 +59,7 @@ let
   # AeroSpace has no key-sequence syntax, so a vim-like chord is built out of
   # binding modes: alt+shift+w activates one where `s` and `m` activate one
   # more, and the digit that lands there does the work and returns to main. So
-  # alt+shift+w s 2 sends the window to code2, alt+shift+w m 2 to monitor 2.
+  # alt+shift+w s 2 sends the window to ai, alt+shift+w m 2 to monitor 2.
   #
   # Entering a mode deactivates every binding of the mode being left, which is
   # what makes bare letters and digits safe to bind inside a chord.
@@ -122,9 +122,9 @@ let
 
   # Cycle workspaces in the order above rather than AeroSpace's own.
   #
-  # `workspace next|prev` walks workspaces alphabetically - browse1 browse2
-  # code1 code2 comm misc - which disagrees with the ctrl+cmd+<n> numbering, so
-  # ctrl+cmd+3 lands on browse1 while "next" from code2 skips to comm. Feeding
+  # `workspace next|prev` walks workspaces alphabetically - ai browse1 browse2
+  # code1 comm misc - which disagrees with the ctrl+cmd+<n> numbering, so
+  # ctrl+cmd+1 lands on code1 while "next" from it skips past ai to comm. Feeding
   # the list on stdin makes the arrows and the number keys agree.
   #
   # Absolute path for the same reason as exec-on-workspace-change: exec-* runs
@@ -188,6 +188,11 @@ in
         after-startup-command = [
           # browse2 was `--layout stack` under yabai; accordion is the analogue.
           "layout --workspace browse2 --root h_accordion"
+          # ai holds a pile of assistant windows to flip through rather than
+          # compare side by side, so it stacks the same way. Root layout is a
+          # property of the workspace, so windows moved in later join the stack;
+          # this only has to be set once per AeroSpace start.
+          "layout --workspace ai --root h_accordion"
         ];
 
         # Drives the bar's workspace indicator. The event is registered by
@@ -211,10 +216,12 @@ in
         on-window-detected = [
           (tileOn "code1" "^kitty$")
 
-          (tileOn "code2" "^Code$")
-          (tileOn "code2" "^Claude")
-          (tileOn "code2" "^pgAdmin 4$")
-          (tileOn "code2" "^Postman$")
+          (tileOn "ai" "^Code$")
+          (tileOn "ai" "^Claude")
+          (tileOn "ai" "^ChatGPT$")
+          (tileOn "ai" "^Paseo$")
+          (tileOn "ai" "^pgAdmin 4$")
+          (tileOn "ai" "^Postman$")
 
           # Work profile window first, everything else in Chrome after it.
           {

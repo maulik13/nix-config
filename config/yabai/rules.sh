@@ -72,10 +72,12 @@ remove_all_rules
 # Associate apps with spaces
 add_rule code1 app="^kitty$"
 
-add_rule code2 app="^Code$"
-add_rule code2 app="^Claude"
-add_rule code2 app="^pgAdmin 4$"
-add_rule code2 app="^Postman$"
+add_rule ai app="^Code$"
+add_rule ai app="^Claude"
+add_rule ai app="^ChatGPT$"
+add_rule ai app="^Paseo$"
+add_rule ai app="^pgAdmin 4$"
+add_rule ai app="^Postman$"
 
 add_rule browse1 app="^Google Chrome$" title="Maulik$"
 add_rule browse1 app="^Notion$"

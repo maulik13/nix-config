@@ -8,7 +8,7 @@
 # Desired spaces, in order: index -> label
 declare -a SPACE_LABELS=(
   [1]="code1"
-  [2]="code2"
+  [2]="ai"
   [3]="browse1"
   [4]="browse2"
   [5]="comm"

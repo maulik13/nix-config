@@ -33,13 +33,71 @@ let
     }) workspaces
   );
 
-  # ctrl + cmd + <n> focuses the nth workspace, matching the old skhd bindings.
+  # ctrl + cmd + <n> focuses the nth workspace, matching the old skhd bindings,
+  # and alt + shift + <n> sends the focused window there. Both rows are built
+  # from one pass so the numbering can never drift apart.
+  #
+  # The move deliberately does not follow the window - it is "get that off my
+  # screen", and ctrl+cmd+<n> is one chord away when you do want to go with it.
+  # Add --focus-follows-window below to invert that.
   workspaceBindings = lib.listToAttrs (
-    lib.imap1 (i: ws: {
-      name = "ctrl-cmd-${toString i}";
-      value = "workspace ${ws}";
-    }) workspaces
+    lib.concatLists (
+      lib.imap1 (i: ws: [
+        {
+          name = "ctrl-cmd-${toString i}";
+          value = "workspace ${ws}";
+        }
+        {
+          name = "alt-shift-${toString i}";
+          value = "move-node-to-workspace ${ws}";
+        }
+      ]) workspaces
+    )
   );
+
+  # ---- Chord modes ---------------------------------------------------------
+  # AeroSpace has no key-sequence syntax, so a vim-like chord is built out of
+  # binding modes: alt+shift+w activates one where `s` and `m` activate one
+  # more, and the digit that lands there does the work and returns to main. So
+  # alt+shift+w s 2 sends the window to code2, alt+shift+w m 2 to monitor 2.
+  #
+  # Entering a mode deactivates every binding of the mode being left, which is
+  # what makes bare letters and digits safe to bind inside a chord.
+  #
+  # Every transition also repaints the bar, which is what turns a chord from a
+  # silent modal state into a visible one - see the chord_mode item in
+  # config/sketchybar-wm/aerospace. Absolute path for the same reason as
+  # exec-on-workspace-change: exec-* runs with no nix profile on PATH.
+  announceMode = "exec-and-forget ${config.services.sketchybar.package}/bin/sketchybar --trigger aerospace_mode_change";
+
+  setMode = mode: [
+    "mode ${mode}"
+    announceMode
+  ];
+
+  toMain = cmd: [
+    cmd
+    "mode main"
+    announceMode
+  ];
+
+  # The digits of a chord's last step, numbered like the bindings above.
+  digitChord =
+    cmd: items:
+    lib.listToAttrs (
+      lib.imap1 (i: item: {
+        name = toString i;
+        value = toMain (cmd item);
+      }) items
+    );
+
+  # Both ways out of a chord. Worth having: while a mode is active AeroSpace
+  # eats its bound keys before the focused app sees them, so a chord entered by
+  # accident silently swallows s, m and the digits until it is left.
+  chordExit = {
+    "esc" = setMode "main";
+    "alt-shift-w" = setMode "main";
+  };
 
   # Apps that were manage=off in rules.sh: floated, and pinned to a workspace
   # where the yabai rule named one.
@@ -258,6 +316,12 @@ in
           # Closest survivor of the grid bindings: fill the screen
           "alt-shift-s" = "fullscreen";
 
+          # Send window to workspace: alt+shift+1..6 come from
+          # workspaceBindings above. alt+shift+w arms the chord that does the
+          # same by number (s) or sends the window to a monitor (m) - see
+          # mode.window below.
+          "alt-shift-w" = setMode "window";
+
           # Focus workspace: ctrl+cmd+1..6 come from workspaceBindings above.
           # ctrl+cmd+7..0 are dropped - there were only ever six Spaces.
           "ctrl-cmd-x" = "workspace-back-and-forth";
@@ -337,6 +401,28 @@ in
           "ctrl-alt-shift-equal" = "volume up";
           "ctrl-alt-shift-0" = "volume mute-toggle";
         };
+
+        # ---- Chord modes, entered from alt+shift+w above -------------------
+        # Siblings of main rather than entries inside it: a mode is a peer of
+        # mode.main, not a binding in it.
+        mode.window.binding = chordExit // {
+          "s" = setMode "window-space";
+          "m" = setMode "window-monitor";
+        };
+
+        mode."window-space".binding =
+          chordExit // digitChord (ws: "move-node-to-workspace ${ws}") workspaces;
+
+        # Monitors are numbered by AeroSpace's own ordering - the same numbers
+        # ctrl+alt+shift+<n> uses. The window lands on whichever workspace that
+        # monitor is currently showing, and focus follows it over.
+        mode."window-monitor".binding =
+          chordExit
+          // digitChord (n: "move-node-to-monitor --focus-follows-window ${toString n}") [
+            1
+            2
+            3
+          ];
       };
     };
   };

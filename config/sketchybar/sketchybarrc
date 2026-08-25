@@ -49,6 +49,12 @@ source $ITEM_DIR/space_add.sh
 
 # Center
 source $ITEM_DIR/wm_mode.sh
+# Only a backend with binding modes ships a chord banner, so this is guarded on
+# what the assembled config actually contains rather than on WM_BACKEND. It stays
+# out of grp_center below because that one bracket definition has to stay valid
+# for both backends; a bracket spans whatever sits between its members anyway, so
+# the banner still reads as part of the centre group.
+[ -r "$ITEM_DIR/chord_mode.sh" ] && source $ITEM_DIR/chord_mode.sh
 source $ITEM_DIR/front_app.sh
 source $ITEM_DIR/media.sh
 add_group_bg grp_center 'wm_mode front_app media'

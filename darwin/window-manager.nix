@@ -17,6 +17,7 @@ let
   # workspace. The valid names are known here, so reject anything else.
   knownWorkspaces = config.services.aerospace.settings.persistent-workspaces or [ ];
   knownWorkspacesList = lib.concatStringsSep " " knownWorkspaces;
+  knownWorkspacesArgs = lib.escapeShellArgs knownWorkspaces;
 
   # A stable command for things that cannot read this Nix config - BetterTouchTool
   # gestures in particular, whose mapping lives in BTT's own database. Pointing
@@ -29,15 +30,35 @@ let
   wmWorkspaceBody =
     if isAerospace then
       ''
-        # The first clause focuses whatever is visible on the monitor under the
-        # pointer, so a gesture acts on the screen being pointed at rather than
-        # wherever keyboard focus happens to sit.
         case "$1" in
-        next)
-          exec ${aerospaceBin} eval 'list-workspaces --monitor mouse --visible | workspace --stdin next; workspace next --wrap-around'
-          ;;
-        prev)
-          exec ${aerospaceBin} eval 'list-workspaces --monitor mouse --visible | workspace --stdin next; workspace prev --wrap-around'
+        next|prev)
+          # AeroSpace returns workspaces alphabetically. Rebuild the subset on
+          # the monitor under the pointer in the order declared by this config.
+          mapfile -t monitor_workspaces < <(
+            ${aerospaceBin} list-workspaces --monitor mouse
+          )
+
+          ordered_workspaces=()
+          for workspace in ${knownWorkspacesArgs}; do
+            for monitor_workspace in "''${monitor_workspaces[@]}"; do
+              if [ "$workspace" = "$monitor_workspace" ]; then
+                ordered_workspaces+=("$workspace")
+                break
+              fi
+            done
+          done
+
+          if [ "''${#ordered_workspaces[@]}" -eq 0 ]; then
+            echo "wm-workspace: no workspaces found on the monitor under the pointer" >&2
+            exit 1
+          fi
+
+          # Establish the starting workspace on the pointer's monitor, then
+          # cycle only through that monitor's ordered subset.
+          ${aerospaceBin} list-workspaces --monitor mouse --visible \
+            | ${aerospaceBin} workspace --stdin --wrap-around next
+          printf '%s\n' "''${ordered_workspaces[@]}" \
+            | ${aerospaceBin} workspace --stdin --wrap-around "$1"
           ;;
         *)
           if [[ " ${knownWorkspacesList} " != *" $1 "* ]]; then

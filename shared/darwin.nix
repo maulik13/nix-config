@@ -26,6 +26,7 @@
   system.defaults = {
     dock = {
       mru-spaces = false;
+      expose-group-apps = true;
       autohide = true;
       orientation = "left";
       tilesize = 56;

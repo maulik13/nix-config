@@ -110,6 +110,7 @@ in
     zsh.enable = true;
     starship.enable = true;
     git.enable = true;
+    gpg.enable = true;
     tmux.enable = true;
     neovim.enable = true;
     firefox.enable = true;

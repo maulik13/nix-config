@@ -38,7 +38,6 @@
   # the $PATH doesn't include all the entries it should by default.
   programs = {
     zsh.enable = true;
-    gnupg.agent.enable = true;
   };
 
   # Make fonts available to macOS applications as well as terminal programs.
@@ -57,7 +56,6 @@
     ++ (with pkgs-stable; [
       jq
       yq-go
-      gnupg
     ]);
 
   services = {

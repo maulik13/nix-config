@@ -4,6 +4,7 @@
   imports = [
     ./firefox.nix
     ./git.nix
+    ./gpg.nix
     ./kitty.nix
     ./neovim.nix
     ./sketchybar.nix

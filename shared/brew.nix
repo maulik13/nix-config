@@ -36,7 +36,6 @@
   };
 
   homebrew.brews = [
-    "pinentry-mac"
     "curl"
     # https://github.com/rgcr/m-cli
     "m-cli"

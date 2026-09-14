@@ -104,3 +104,47 @@ function vol_down() {
   local change="$1"
   m volume --set $(expr $(m volume | sed 's/Vol: \([0-9]*\).*/\1/') - $change)
 }
+
+# ----- AeroSpace ------
+
+# Restart AeroSpace under the launchd agent that owns it.
+#
+# org.nixos.aerospace is the only launcher that passes --config-path, so starting
+# AeroSpace.app any other way - Spotlight, Launchpad, or opening it again after
+# the menu-bar disable toggle - brings up a second server on AeroSpace's built-in
+# defaults. That one hijacks the socket, so the CLI and SketchyBar both start
+# answering from it and the six workspaces are replaced by the stock 1-10 + A-Z.
+# Killing the stray is not enough on its own: the surviving server never re-binds
+# the socket and starts refusing connections, so the agent is kicked either way.
+function restart_aerospace() {
+  local agent="gui/$(id -u)/org.nixos.aerospace"
+  local strays i
+  strays=$(ps -Ao pid=,command= | grep '[A]eroSpace.app/Contents/MacOS/AeroSpace' | grep -v -- '--config-path' | awk '{print $1}')
+
+  if [ -n "$strays" ]; then
+    echo "Killing stray AeroSpace without --config-path: $(echo $strays | tr '\n' ' ')"
+    echo "$strays" | xargs kill
+  fi
+
+  launchctl kickstart -k "$agent" || {
+    echo "Could not kick $agent"
+    return 1
+  }
+
+  for i in {1..20}; do
+    aerospace list-workspaces --focused >/dev/null 2>&1 && break
+    sleep 0.25
+  done
+
+  if ! aerospace list-workspaces --focused >/dev/null 2>&1; then
+    echo "AeroSpace did not come back up - check: launchctl print $agent"
+    return 1
+  fi
+
+  # Windows opened while the stray was in charge kept its workspace assignments,
+  # so put every one of them back through the rules.
+  aerospace run-callback --for-every-window on-window-detected >/dev/null 2>&1
+  pgrep -x sketchybar >/dev/null && sketchybar --reload
+
+  echo "AeroSpace restarted: $(aerospace list-workspaces --all | tr '\n' ' ')"
+}

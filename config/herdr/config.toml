@@ -1,0 +1,85 @@
+# Herdr configuration.
+#
+# Keybindings mirror config/zellij/static.kdl as closely as herdr's model
+# allows. Zellij is modal -- `Alt p` enters pane mode, `Alt t` enters tab mode,
+# then a bare letter acts -- while herdr has a single tmux-style prefix and no
+# per-domain modes. The bridge: set herdr's prefix to `alt+p`, so every zellij
+# pane-mode sequence works verbatim, and bind zellij's direct chords on top.
+
+onboarding = false
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[ui]
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+
+[ui.toast]
+delivery = "system"
+
+[keys]
+# zellij: `bind "Alt p" { SwitchToMode "Pane"; }`. Making this the prefix is
+# what lets the pane-mode bindings below match zellij keystroke for keystroke.
+prefix = "alt+p"
+
+# --- Pane focus -------------------------------------------------------------
+# zellij binds these twice: directly via shared_except "locked" (Alt h/j/k/l)
+# and inside pane mode (h/j/k/l). Both forms are reproduced.
+#
+# Caveat: zellij's Alt h / Alt l are MoveFocusOrTab, which falls through to the
+# previous/next tab when the focus is already at the edge. Herdr has no
+# combined action, so these stop at the edge; use alt+comma / alt+period.
+focus_pane_left = ["prefix+h", "alt+h"]
+focus_pane_down = ["prefix+j", "alt+j"]
+focus_pane_up = ["prefix+k", "alt+k"]
+focus_pane_right = ["prefix+l", "alt+l"]
+
+# zellij pane mode: `bind "p" { SwitchFocus; }`. prefix+tab is herdr's own
+# default, kept so the habit still works.
+cycle_pane_next = ["prefix+p", "prefix+tab"]
+cycle_pane_previous = "prefix+shift+tab"
+
+# --- Pane handling ----------------------------------------------------------
+# zellij pane mode: f = ToggleFocusFullscreen, x = CloseFocus, c = RenamePane.
+zoom = "prefix+f"
+close_pane = "prefix+x"
+rename_pane = "prefix+c"
+
+# zellij pane mode: d = NewPane "Down", r = NewPane "Right", n = NewPane.
+# Alt n is zellij's direct NewPane from shared_except "locked".
+split_horizontal = "prefix+d"
+split_vertical = ["prefix+r", "prefix+n", "alt+n"]
+
+# zellij: `bind "Alt r" { SwitchToMode "Resize"; }`. Kept direct so it does not
+# collide with prefix+r (split right) above.
+resize_mode = "alt+r"
+
+# --- Tabs -------------------------------------------------------------------
+# zellij normal mode: Alt , = GoToPreviousTab, Alt . = GoToNextTab,
+# Alt Tab = GoToNextTab.
+previous_tab = "alt+comma"
+next_tab = ["alt+period", "alt+tab"]
+
+# No zellij twin: zellij reaches numbered tabs through tab mode (Alt t then
+# 1-9), which herdr cannot express. A direct chord is the closest equivalent.
+switch_tab = "alt+1..9"
+
+# zellij tab mode: n = NewTab, x = CloseTab, r = RenameTab. Those letters are
+# already taken by pane mode on the shared prefix, so tab actions move to
+# t / shift+x / shift+t. The latter two are herdr's own defaults.
+new_tab = "prefix+t"
+close_tab = "prefix+shift+x"
+rename_tab = "prefix+shift+t"
+
+# Everything not listed keeps its herdr default and simply moves to the new
+# prefix: alt+p ? help, alt+p s settings, alt+p q detach, alt+p w workspaces,
+# alt+p g goto, alt+p b sidebar, alt+p e edit scrollback.
+#
+# Deliberately not mapped, no herdr equivalent exists:
+#   Alt [ / Alt ]   MoveTab left/right   (herdr has no move-tab action)
+#   Alt = / Alt -   Resize increase/decrease (herdr resizes only in resize mode)
+#   Alt g           Locked mode          (herdr has no lock mode)
+#   Alt s / Alt o   Scroll / Session mode (copy mode is prefix+[, not rebindable)
+#   Alt q           Quit                 (herdr's nearest is detach, alt+p q)

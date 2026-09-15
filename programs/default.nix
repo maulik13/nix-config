@@ -5,6 +5,7 @@
     ./firefox.nix
     ./ghostty.nix
     ./git.nix
+    ./herdr.nix
     ./gpg.nix
     ./kitty.nix
     ./neovim.nix

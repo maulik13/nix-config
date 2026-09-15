@@ -116,6 +116,7 @@ in
     firefox.enable = true;
     kitty.enable = true;
     ghostty.enable = true;
+    herdr.enable = true;
     zellij.enable = true;
   };
 

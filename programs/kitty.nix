@@ -30,7 +30,6 @@ in
         ./../config/kitty/themes/rosepine-moon-custom.conf;
       "kitty/kitty.app.png".source = ./../config/kitty/kitty.app.png;
       "kitty/kitty.app.1.png".source = ./../config/kitty/kitty.app.1.png;
-      "kitty/font-nerd-symbol.conf".source = ./../config/kitty/font-nerd-symbol.conf;
       "kitty/machine.conf".text = ''
         font_size ${toString cfg.fontSize}
       '';

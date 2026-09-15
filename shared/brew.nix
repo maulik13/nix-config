@@ -20,10 +20,12 @@
     ];
   };
 
-  # To make this work, homebrew need to be installed manually, see
-  # https://brew.sh The apps installed by homebrew are not managed by nix, and
-  # not reproducible!  But on macOS, homebrew has a much larger selection of
-  # apps than nixpkgs, especially for GUI apps!
+  # Homebrew itself is installed by nix-homebrew above, from its pinned
+  # brew-src input -- there is no manual https://brew.sh step. The formulae and
+  # casks it installs are still fetched at activation time and are not pinned by
+  # the flake, so they are not reproducible. That trade is worth it on macOS,
+  # where homebrew has a much larger selection of apps than nixpkgs, especially
+  # GUI apps.
   homebrew = {
     enable = true;
   };

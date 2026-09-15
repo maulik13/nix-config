@@ -24,7 +24,6 @@ in
       "ghostty/themes/catppuccin-macchiato-custom".source =
         ./../config/ghostty/themes/catppuccin-macchiato-custom;
       "ghostty/themes/rosepine-moon-custom".source = ./../config/ghostty/themes/rosepine-moon-custom;
-      "ghostty/font-nerd-symbols".source = ./../config/ghostty/font-nerd-symbols;
       "ghostty/machine".text = ''
         font-size = ${toString cfg.fontSize}
       '';

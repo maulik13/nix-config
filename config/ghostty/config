@@ -28,8 +28,13 @@ font-style-bold       = Extrabold
 font-style-italic     = Light Italic
 font-style-bold-italic = Bold Italic
 
-# Customize fonts for symbols (kitty: symbol_map)
-config-file = font-nerd-symbols
+# No symbol map (kitty: symbol_map). Kitty's `include font-nerd-symbols.conf`
+# never resolves -- the deployed file is font-nerd-symbol.conf, singular -- so
+# kitty renders nerd glyphs through automatic font fallback, and ghostty does
+# the same here. Box drawing in particular must stay unmapped: both terminals
+# draw that range themselves, scaled to the full cell, so lines connect across
+# rows even with adjust-cell-height set. Forcing it to a font renders vertical
+# rules dashed.
 
 # kitty: modify_font. Ghostty's adjust-* values are deltas from the computed
 # metric, so kitty's "100%" (unchanged) and "0" entries are simply omitted and

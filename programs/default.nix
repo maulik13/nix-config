@@ -3,6 +3,7 @@
 {
   imports = [
     ./firefox.nix
+    ./ghostty.nix
     ./git.nix
     ./gpg.nix
     ./kitty.nix

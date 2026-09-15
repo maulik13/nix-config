@@ -1,0 +1,56 @@
+# vim:ft=conf
+
+## name:     Catppuccin-Macchiato
+## author:   Pocco81 (https://github.com/Pocco81)
+## license:  MIT
+## blurb:    Soothing pastel theme for the high-spirited!
+## Translated from config/kitty/themes/catppuccin-macchiato-custom.conf
+
+# The basic colors
+foreground           = #CAD3F5
+background           = #24273A
+selection-foreground = #24273A
+selection-background = #F4DBD6
+
+# Cursor colors
+cursor-color = #F4DBD6
+cursor-text  = #24273A
+
+# Titlebar, standing in for kitty's tab bar colors. Ghostty uses native macOS
+# tabs, so only the titlebar can be themed.
+window-titlebar-background = #1E2030
+window-titlebar-foreground = #CAD3F5
+
+# The 16 terminal colors
+
+# black
+palette = 0=#24273A
+palette = 8=#5B6078
+
+# red
+palette = 1=#ED8796
+palette = 9=#ED8796
+
+# green
+palette = 2=#A6DA95
+palette = 10=#A6DA95
+
+# yellow
+palette = 3=#EED49F
+palette = 11=#EED49F
+
+# blue
+palette = 4=#8AADF4
+palette = 12=#8AADF4
+
+# magenta
+palette = 5=#F5BDE6
+palette = 13=#F5BDE6
+
+# cyan
+palette = 6=#8BD5CA
+palette = 14=#8BD5CA
+
+# white
+palette = 7=#B8C0E0
+palette = 15=#A5ADCB

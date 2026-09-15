@@ -115,6 +115,7 @@ in
     neovim.enable = true;
     firefox.enable = true;
     kitty.enable = true;
+    ghostty.enable = true;
     zellij.enable = true;
   };
 

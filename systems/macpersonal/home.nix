@@ -18,5 +18,6 @@
     yabai.enable = true;
     sketchybar.enable = true;
     kitty.fontSize = 16;
+    ghostty.fontSize = 16;
   };
 }
